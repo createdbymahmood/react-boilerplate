@@ -1,3 +1,5 @@
+import RouteFactory from './routes';
+
 export default function App() {
-    return <div></div>;
+    return <RouteFactory />;
 }

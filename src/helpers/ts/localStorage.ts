@@ -45,7 +45,7 @@ export function getWindow(rootElement?: Element | null): Window | undefined {
  * @param key The key of the item to fetch from local storage
  */
 export function getItem(key: string): string | null {
-    let result = null;
+    let result: null | string = null;
     try {
         const win = getWindow();
         result = win ? win.localStorage.getItem(key) : null;
