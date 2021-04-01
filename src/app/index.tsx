@@ -1,4 +1,4 @@
-import RouteFactory from './routes';
+import RouteFactory from 'app/routes';
 
 export default function App() {
     return <RouteFactory />;
