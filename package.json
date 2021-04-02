@@ -15,6 +15,7 @@
         "@types/react-dom": "17.0.0",
         "@types/react-router-dom": "5.1.7",
         "axios": "0.21.1",
+        "clsx": "1.1.1",
         "husky": "6.0.0",
         "i18next": "20.1.0",
         "i18next-browser-languagedetector": "6.1.0",
@@ -30,6 +31,7 @@
         "react-router-dom": "5.2.0",
         "react-scripts": "4.0.3",
         "react-use": "17.2.1",
+        "shelljs": "0.8.4",
         "type-fest": "1.0.1",
         "typescript": "4.1.2",
         "web-vitals": "1.0.1"
@@ -39,7 +41,8 @@
         "build": "craco build",
         "test": "craco test",
         "eject": "craco eject",
-        "generate": "plop --plopfile internals/generators/plopfile.js"
+        "generate": "plop --plopfile internals/generators/plopfile.js",
+        "prettify": "prettier --write src"
     },
     "eslintConfig": {
         "extends": [
