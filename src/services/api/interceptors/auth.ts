@@ -2,7 +2,7 @@ import { AxiosRequestConfig, AxiosInstance } from 'axios';
 import * as localStorage from 'helpers/ts/localStorage';
 interface AuthRequestConfig {
     /**
-    //  * @default true
+     * @default true
      */
     shouldAuthenticate?: boolean;
 }
