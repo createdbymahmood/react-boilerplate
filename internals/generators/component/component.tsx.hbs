@@ -1,0 +1,22 @@
+import { FC ,ComponentPropsWithoutRef } from "react";
+/* components */
+/* modules */
+import clsx from 'clsx';
+/* helpers */
+/* assets */
+/* services */
+/* constants */
+import s from './{{properCase name}}.module.scss'
+/* types */
+
+
+export type CommonProps = {};
+
+export type Props = Omit<ComponentPropsWithoutRef<'div'>, keyof CommonProps> &
+    CommonProps;
+
+    export const {{properCase name}}: FC<Props> = ({ className, ...restProps }) => {
+        return <div className={s.{{camelCase name}}, clsx(className)}>
+            {{properCase name}}
+        </div>;
+        };
