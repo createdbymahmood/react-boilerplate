@@ -23,7 +23,7 @@ export const routes: Route[] = [
     },
 
     {
-        path: '/',
+        path: ROUTES.root,
         to: ROUTES.home,
         config: {
             private: false,
