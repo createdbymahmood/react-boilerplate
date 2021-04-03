@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "baseUrl": "src",
+        "typeRoots": ["node_modules/@types"],
         "paths": {
             "@components/*": ["app/components/*"],
             "@pages/*": ["app/pages/*"],
