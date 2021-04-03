@@ -8,7 +8,3 @@ export type LoginPayload = {
     username: string;
     password: string;
 };
-
-export type LoginMutationContext = {
-    rollback: () => void;
-};

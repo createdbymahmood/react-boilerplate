@@ -6,7 +6,7 @@ import Application from 'app';
 import reportWebVitals from 'reportWebVitals';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
-import { ReactQueryService } from 'services/reactQuery/reactQueryService';
+import { ReactQueryService } from 'services/reactQuery';
 
 // Initialize languages
 import 'locales/i18n';

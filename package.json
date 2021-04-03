@@ -7,6 +7,8 @@
         "@testing-library/jest-dom": "5.11.4",
         "@testing-library/react": "11.1.0",
         "@testing-library/user-event": "12.1.10",
+        "@types/async": "3.2.5",
+        "async": "3.2.0",
         "axios": "0.21.1",
         "clsx": "1.1.1",
         "i18next": "20.1.0",
@@ -21,6 +23,7 @@
         "react-router-dom": "5.2.0",
         "react-scripts": "4.0.3",
         "react-use": "17.2.1",
+        "sass": "1.32.8",
         "shelljs": "0.8.4",
         "typescript": "4.1.2",
         "web-vitals": "1.0.1"
@@ -31,7 +34,7 @@
         "test": "craco test",
         "eject": "craco eject",
         "generate": "plop --plopfile internals/generators/plopfile.js",
-        "prettify": "prettier --write src"
+        "prettify": "prettier --write ."
     },
     "eslintConfig": {
         "extends": [
@@ -52,8 +55,6 @@
         ]
     },
     "devDependencies": {
-        "craco-alias": "2.2.0",
-        "webpackbar": "5.0.0-3",
         "@types/jest": "26.0.15",
         "@types/lodash": "4.14.168",
         "@types/node": "12.0.0",
@@ -61,8 +62,13 @@
         "@types/react": "17.0.0",
         "@types/react-dom": "17.0.0",
         "@types/react-router-dom": "5.1.7",
-        "prettier": "2.2.1",
+        "craco-alias": "2.2.0",
+        "eslint-config-prettier": "8.1.0",
+        "eslint-plugin-prettier": "3.3.1",
+        "eslint-plugin-react-hooks": "4.2.0",
         "plop": "2.7.4",
-        "type-fest": "1.0.1"
+        "prettier": "2.2.1",
+        "type-fest": "1.0.1",
+        "webpackbar": "5.0.0-3"
     }
 }

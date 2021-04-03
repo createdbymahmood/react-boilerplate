@@ -1,28 +1,55 @@
+/* constants */
 import API_URLS from 'constants/apiUrls';
-import { useMutation, UseMutationResult } from 'react-query';
+/* modules */
+import {
+    useMutation,
+    UseMutationOptions,
+    UseMutationResult,
+} from 'react-query';
+// import _fp from 'lodash/fp';
+/* services */
 import apiService, { AxiosError } from 'services/apiService';
-import type * as User from '@entities/user';
-import type * as Server from '@entities/server';
-import * as TGlboal from '@entities/gobal';
+/* types */
+import * as User from '@entities/user';
+import * as Server from '@entities/server';
+import * as G from '@entities/gobal';
 
-const fn = async (dto: User.LoginPayload): Promise<User.Model> =>
-    await (await apiService.post<User.Model>(API_URLS.login, dto)).data;
+type TData = User.Model;
+type TError = AxiosError<Server.Error>;
+type TVariables = User.LoginPayload;
+type TContext = G.MutationContext;
 
-export const useLogin = (): UseMutationResult<
-    User.Model,
-    AxiosError<Server.Error>,
-    User.LoginPayload,
-    TGlboal.MutationContext
-> =>
-    useMutation(fn, {
-        onMutate: () => {
-            return {
-                rollback: () => {
-                    console.log('rollback call');
-                },
-            };
-        },
-        onError: (err, variables, ctx) => {
-            ctx?.rollback();
-        },
+async function fn(variables: TVariables): Promise<TData> {
+    return (await apiService.post<TData>(API_URLS.login, variables)).data;
+}
+
+type TOptions = UseMutationOptions<TData, TError, TVariables, TContext>;
+type TDefinedOptions = 'onMutate' | 'onError' | 'mutationKey' | 'onSuccess';
+type TPrunedOptions = Omit<TOptions, TDefinedOptions>;
+
+export function useLogin(
+    options?: TPrunedOptions,
+): UseMutationResult<TData, TError, TVariables, TContext> {
+    return useMutation(API_URLS.login, fn, {
+        onMutate: updateCache,
+        onError: handleError,
+        onSuccess: handleSuccess,
+        ...options,
     });
+}
+
+function updateCache(vars: TVariables): TContext {
+    return {
+        rollback: () => {},
+    };
+}
+
+function handleError(
+    error: TError,
+    variables: TVariables,
+    context: TContext | undefined,
+) {
+    context?.rollback();
+}
+
+function handleSuccess() {}

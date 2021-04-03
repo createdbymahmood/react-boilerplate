@@ -1,13 +1,11 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-/* helpers */
-import { or } from 'helpers/ts/or';
-/* constants */
-import ENV from 'constants/env';
 import en from './en/translation.json';
 import { convertLanguageJsonToObject } from './translations';
 
+/* constants */
+import ENV from 'constants/env';
 export const translationsJson = {
     en: {
         translation: en,
@@ -28,7 +26,7 @@ export const i18n = i18next
     .init({
         resources: translationsJson,
         fallbackLng: 'en',
-        debug: or(ENV.isProduction, ENV.isTest),
+        debug: ENV.isDevelopment,
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
         },
