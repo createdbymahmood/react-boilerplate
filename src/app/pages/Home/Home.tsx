@@ -17,7 +17,12 @@ const Home: FC = () => {
     const { t } = useTranslation();
     const { mutate } = useLogin();
 
-    const handleSubmitForm = () => mutate({ username: '', password: '' });
+    const handleSuccessfulLogin = () => {};
+    const handleSubmitForm = () =>
+        mutate(
+            { username: '', password: '' },
+            { onSuccess: handleSuccessfulLogin },
+        );
 
     return (
         <div className={s.home} onClick={handleSubmitForm}>

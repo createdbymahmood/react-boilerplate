@@ -13,6 +13,7 @@ import apiService, { AxiosError } from 'services/apiService';
 import * as User from '@entities/user';
 import * as Server from '@entities/server';
 import * as G from '@entities/gobal';
+import { queryClient } from 'services/reactQuery';
 
 type TData = User.Model;
 type TError = AxiosError<Server.Error>;
@@ -31,25 +32,24 @@ export function useLogin(
     options?: TPrunedOptions,
 ): UseMutationResult<TData, TError, TVariables, TContext> {
     return useMutation(API_URLS.login, fn, {
-        onMutate: updateCache,
-        onError: handleError,
-        onSuccess: handleSuccess,
+        onMutate,
+        onError,
+        onSuccess,
         ...options,
     });
 }
 
-function updateCache(vars: TVariables): TContext {
+function onMutate(v: TVariables): TContext {
     return {
         rollback: () => {},
     };
 }
 
-function handleError(
-    error: TError,
-    variables: TVariables,
-    context: TContext | undefined,
-) {
+function onError(e: TError, v: TVariables, context?: TContext) {
     context?.rollback();
 }
 
-function handleSuccess() {}
+function onSuccess(d: TData, v: TVariables, context?: TContext) {
+    /* revalidate data */
+    queryClient.invalidateQueries('');
+}
