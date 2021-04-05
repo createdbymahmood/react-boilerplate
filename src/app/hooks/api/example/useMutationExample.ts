@@ -5,11 +5,11 @@ import { useMutation, UseMutationResult } from 'react-query';
 // import _fp from 'lodash/fp';
 /* services */
 import apiService, { AxiosError } from 'services/apiService';
+import { queryClient } from 'services/reactQuery';
 /* types */
 import * as User from '@entities/user';
 import * as Server from '@entities/server';
 import * as G from '@entities/gobal';
-import { queryClient } from 'services/reactQuery';
 
 type TData = User.Model;
 type TError = AxiosError<Server.Error>;
