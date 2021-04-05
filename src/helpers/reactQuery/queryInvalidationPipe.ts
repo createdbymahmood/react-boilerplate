@@ -6,6 +6,6 @@ const invalidator = _.pipe(
     _.map<string, void>(i => queryClient.invalidateQueries(i)),
 );
 
-export function queryInvalidationPipe(...args: string[]) {
+export function queryInvalidationPipe(...args: string[]): void {
     invalidator(args);
 }
