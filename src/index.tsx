@@ -9,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ReactQueryService } from 'services/reactQuery';
 
 // Initialize languages
-import 'locales/i18n';
+import 'services/i18n/i18n';
 
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 

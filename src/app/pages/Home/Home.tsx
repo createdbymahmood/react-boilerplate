@@ -4,7 +4,7 @@ import { FC } from 'react';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 /* helpers */
-import { translations } from 'locales/translations';
+import { translations } from 'services/i18n/translations';
 /* assets */
 /* services */
 /* constants */
