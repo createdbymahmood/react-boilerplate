@@ -9,32 +9,11 @@ import { translations } from 'services/i18n/translations';
 /* services */
 /* constants */
 /* styles */
-import s from './Home.module.scss';
-import { useData, useLogin } from '@hooks/api';
-import { queryInvalidationPipe } from 'helpers/reactQuery/queryInvalidationPipe';
-import API_URLS from 'constants/apiUrls';
+
 /* types */
 
 const Home: FC = () => {
-    const { t } = useTranslation();
-    const { mutate } = useLogin();
-    const { data } = useData();
-
-    const handleSuccessfulLogin = () => {
-        queryInvalidationPipe(
-            API_URLS.login,
-            API_URLS.login,
-            API_URLS.login,
-            API_URLS.login,
-            API_URLS.login,
-        );
-    };
-
-    return (
-        <div className={s.home} onClick={handleSuccessfulLogin}>
-            Home
-        </div>
-    );
+    return <div>Home</div>;
 };
 
 export default Home;
