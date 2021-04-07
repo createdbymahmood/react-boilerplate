@@ -33,7 +33,7 @@ module.exports = {
         },
     },
     eslint: {
-        enable: true /* (default value) */,
+        enable: false /* (default value) */,
         mode: 'file' /* (default value) */,
         configure: eslintConfig => {
             return eslintConfig;
