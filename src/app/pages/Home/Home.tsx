@@ -9,11 +9,12 @@ import { translations } from 'services/i18n/translations';
 /* services */
 /* constants */
 /* styles */
+import styles from './Home.module.scss';
 
 /* types */
 
 const Home: FC = () => {
-    return <div>Home</div>;
+    return <p className={styles.home}>Salam</p>;
 };
 
 export default Home;
