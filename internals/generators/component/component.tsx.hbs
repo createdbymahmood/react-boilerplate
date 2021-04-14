@@ -20,7 +20,7 @@ export type Props = Omit<ComponentPropsWithoutRef<'div'>, keyof CommonProps> &
     export const {{properCase name}}: FC<Props> = ({ className, ...restProps }) => {
         const { t } = useTranslation();
 
-        return <div className={s.{{camelCase name}}, clsx(className)}>
+        return <div className={clsx(className, s.{{camelCase name}})}>
             {{properCase name}}
         </div>;
         };
