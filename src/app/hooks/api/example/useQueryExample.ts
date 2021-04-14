@@ -4,7 +4,7 @@ import API_URLS from 'constants/apiUrls';
 import { UseQueryResult, useQuery } from 'react-query';
 // import _fp from 'lodash/fp';
 /* services */
-import apiService, { AxiosError } from 'services/apiService';
+import xhrService, { AxiosError } from 'services/xhrService';
 import { queryClient } from 'services/reactQuery';
 /* types */
 import * as User from '@entities/user';
@@ -14,7 +14,7 @@ type TData = User.Model;
 type TError = AxiosError<Server.Error>;
 
 async function fn(): Promise<TData> {
-    return (await apiService.get<TData>(API_URLS.login)).data;
+    return (await xhrService.get<TData>(API_URLS.login)).data;
 }
 
 export function useData(): UseQueryResult<TData, TError> {

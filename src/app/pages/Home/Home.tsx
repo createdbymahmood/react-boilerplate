@@ -10,11 +10,22 @@ import { translations } from 'services/i18n/translations';
 /* constants */
 /* styles */
 import styles from './Home.module.scss';
+import { NavLink } from 'react-router-dom';
+import { routeTo } from 'helpers/ts/routeTo';
 
 /* types */
 
 const Home: FC = () => {
-    return <p className={styles.home}>Salam</p>;
+    return (
+        <NavLink
+            to={{
+                pathname: routeTo('pkg'),
+                state: { data: { name: 'Salam' } },
+            }}
+        >
+            <p className={styles.home}>Salam</p>
+        </NavLink>
+    );
 };
 
 export default Home;

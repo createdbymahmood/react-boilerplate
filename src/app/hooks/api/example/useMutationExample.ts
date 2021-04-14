@@ -4,7 +4,7 @@ import API_URLS from 'constants/apiUrls';
 import { useMutation, UseMutationResult } from 'react-query';
 // import _fp from 'lodash/fp';
 /* services */
-import apiService, { AxiosError } from 'services/apiService';
+import xhrService, { AxiosError } from 'services/xhrService';
 import { queryClient } from 'services/reactQuery';
 /* types */
 import * as User from '@entities/user';
@@ -17,7 +17,7 @@ type TVariables = User.LoginPayload;
 type TContext = G.MutationContext;
 
 async function fn(variables: TVariables): Promise<TData> {
-    return (await apiService.post<TData>(API_URLS.login, variables)).data;
+    return (await xhrService.post<TData>(API_URLS.login, variables)).data;
 }
 
 export function useLogin(): UseMutationResult<
