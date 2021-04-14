@@ -16,16 +16,7 @@ import { routeTo } from 'helpers/ts/routeTo';
 /* types */
 
 const Home: FC = () => {
-    return (
-        <NavLink
-            to={{
-                pathname: routeTo('pkg'),
-                state: { data: { name: 'Salam' } },
-            }}
-        >
-            <p className={styles.home}>Salam</p>
-        </NavLink>
-    );
+    return <p className={styles.home}>Salam</p>;
 };
 
 export default Home;

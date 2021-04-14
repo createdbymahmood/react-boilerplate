@@ -2,7 +2,6 @@
 import API_URLS from 'constants/apiUrls';
 /* modules */
 import { useMutation, UseMutationResult } from 'react-query';
-// import _fp from 'lodash/fp';
 /* services */
 import xhrService, { AxiosError } from 'services/xhrService';
 import { queryClient } from 'services/reactQuery';
