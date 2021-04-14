@@ -42,4 +42,12 @@ module.exports = {
             return eslintOptions;
         },
     },
+
+    babel: {
+        presets: [],
+        plugins: ['lodash'],
+        loaderOptions: babelLoaderOptions => {
+            return babelLoaderOptions;
+        },
+    },
 };
