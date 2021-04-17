@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@commitlint/config-conventional": "12.1.1",
         "@craco/craco": "6.1.1",
         "@tailwindcss/postcss7-compat": "2.1.0",
         "@testing-library/jest-dom": "5.11.10",
@@ -15,6 +16,7 @@
         "babel-plugin-lodash": "3.3.4",
         "clsx": "1.1.1",
         "craco-alias": "2.2.0",
+        "husky": "6.0.0",
         "i18next": "20.2.1",
         "i18next-browser-languagedetector": "6.1.0",
         "immer": "9.0.1",
