@@ -3,6 +3,7 @@ import { ROUTES } from 'constants/routes';
 
 /* pages */
 import Home from '@pages/Home';
+import Dashboard from '@pages/Dashboard';
 
 export type Route = {
     path: string;
@@ -21,10 +22,16 @@ export const routes: Route[] = [
             private: false,
         },
     },
-
     {
-        path: ROUTES.root,
-        to: ROUTES.home,
+        path: ROUTES.dashboard,
+        component: Dashboard,
+        config: {
+            private: true,
+        },
+    },
+    {
+        path: '*',
+        to: ROUTES.dashboard,
         config: {
             private: false,
         },

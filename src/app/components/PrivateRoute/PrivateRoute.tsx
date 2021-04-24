@@ -1,6 +1,9 @@
+import { ComponentType } from 'react';
 /* components */
 import { Route } from '@components/Route';
 /* modules */
+import { useCurrentUser } from '@hooks/api';
+import { Redirect, RouteComponentProps } from 'react-router';
 /* helpers */
 import { routeTo } from 'helpers/ts/routeTo';
 /* assets */
@@ -9,23 +12,31 @@ import { routeTo } from 'helpers/ts/routeTo';
 /* types */
 import { $ElementProps } from '@entities/gobal';
 import { History } from 'history';
-import { Redirect, RouteComponentProps } from 'react-router';
-import { ComponentType } from 'react';
 
 type Props = $ElementProps<typeof Route> & {
-    authState: boolean;
     component: ComponentType;
 };
 
-export const PrivateRoute = ({
-    component: Component,
-    authState,
-    ...rest
-}: Props) => {
+export const PrivateRoute = ({ component: Component, ...rest }: Props) => {
+    const { data, isLoading, isError } = useCurrentUser({
+        retry: false,
+        staleTime: 10 * 60 * 1000, // 10 mins
+    });
+
     const UnauthorizedRedirectionConfig: History.LocationDescriptor = {
-        pathname: routeTo('error'),
+        pathname: routeTo('home'),
         state: { from: rest.location },
     };
+
+    if (isLoading) {
+        return <div>Authenticating...</div>;
+    }
+
+    if (isError) {
+        return <Redirect to={UnauthorizedRedirectionConfig} />;
+    }
+
+    const authState = !isLoading && data;
 
     const renderComponent = (props: RouteComponentProps) => {
         if (authState) {

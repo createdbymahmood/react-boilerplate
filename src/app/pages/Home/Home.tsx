@@ -10,13 +10,17 @@ import { translations } from 'services/i18n/translations';
 /* constants */
 /* styles */
 import styles from './Home.module.scss';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { routeTo } from 'helpers/ts/routeTo';
 
 /* types */
 
 const Home: FC = () => {
-    return <p className={styles.home}>Salam</p>;
+    return (
+        <Link to={routeTo('dashboard')}>
+            <p className={styles.home}>dashboard route </p>;
+        </Link>
+    );
 };
 
 export default Home;
