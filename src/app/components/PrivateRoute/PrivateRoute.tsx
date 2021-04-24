@@ -1,6 +1,7 @@
 import { ComponentType } from 'react';
 /* components */
 import { Route } from '@components/Route';
+import { Spinner } from '@components/Spinner';
 /* modules */
 import { useCurrentUser } from '@hooks/api';
 import { Redirect, RouteComponentProps } from 'react-router';
@@ -29,7 +30,7 @@ export const PrivateRoute = ({ component: Component, ...rest }: Props) => {
     };
 
     if (isLoading) {
-        return <div>Authenticating...</div>;
+        return <Spinner />;
     }
 
     if (isError) {
