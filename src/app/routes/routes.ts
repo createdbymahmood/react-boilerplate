@@ -31,7 +31,7 @@ export const routes: Route[] = [
     },
     {
         path: '*',
-        to: ROUTES.dashboard,
+        to: ROUTES.home,
         config: {
             private: false,
         },
