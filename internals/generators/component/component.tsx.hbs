@@ -12,9 +12,9 @@ import s from './{{properCase name}}.module.scss'
 /* types */
 
 
-export type CommonProps = {};
+type CommonProps = {};
 
-export type Props = Omit<ComponentPropsWithoutRef<'div'>, keyof CommonProps> &
+type Props = Omit<ComponentPropsWithoutRef<'div'>, keyof CommonProps> &
     CommonProps;
 
     export const {{properCase name}}: FC<Props> = ({ className, ...restProps }) => {
