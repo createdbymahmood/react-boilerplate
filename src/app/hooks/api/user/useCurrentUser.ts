@@ -3,13 +3,13 @@ import API_URLS from 'constants/apiUrls';
 /* modules */
 import { UseQueryResult, useQuery, QueryObserverOptions } from 'react-query';
 /* services */
-import xhrService, { AxiosError } from 'services/xhrService';
+import xhrService from 'services/xhrService';
 /* types */
 import * as User from '@entities/user';
 import * as Server from '@entities/server';
 
 type TData = User.Model;
-type TError = AxiosError<Server.Error>;
+type TError = Server.Error;
 
 async function fn(): Promise<TData> {
     return (await xhrService.get<TData>(API_URLS.currentUser)).data;
@@ -26,7 +26,7 @@ export function useCurrentUser(
 }
 
 function onError(e: TError) {
-    console.log('err');
+    console.log(e);
 }
 
 function onSuccess(d: TData) {}
