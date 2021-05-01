@@ -12,4 +12,6 @@ export const applyErrorInterceptor = (instance: AxiosInstance) => {
             throw err?.response?.data;
         },
     );
+
+    return instance;
 };
