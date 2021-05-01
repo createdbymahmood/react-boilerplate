@@ -18,7 +18,7 @@ import { routeTo } from 'helpers/ts/routeTo';
 const Home: FC = () => {
     return (
         <Link to={routeTo('dashboard')}>
-            <p className={styles.home}>dashboard route </p>;
+            <p className={styles.home}>dashboard route </p> 
         </Link>
     );
 };
