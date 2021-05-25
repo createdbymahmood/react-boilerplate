@@ -9,9 +9,7 @@ import Application from 'app';
 
 /* services */
 import reportWebVitals from 'reportWebVitals';
-import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter } from 'react-router-dom';
-import { ReactQueryService } from 'services/reactQuery';
+import AppProviders from 'services/AppProviders';
 
 /* Initialize languages */
 import 'services/i18n/i18n';
@@ -23,13 +21,9 @@ const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
 ReactDOM.render(
     <React.StrictMode>
-        <HelmetProvider>
-            <ReactQueryService>
-                <BrowserRouter>
-                    <Application />
-                </BrowserRouter>
-            </ReactQueryService>
-        </HelmetProvider>
+        <AppProviders>
+            <Application />
+        </AppProviders>
     </React.StrictMode>,
     MOUNT_NODE,
 );
