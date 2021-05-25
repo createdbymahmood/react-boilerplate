@@ -1,5 +1,5 @@
 import _ from 'lodash/fp';
-import { queryClient } from 'services/reactQuery';
+import { queryClient } from 'services/ReactQuery';
 
 const invalidator = _.pipe(
     _.uniq,
