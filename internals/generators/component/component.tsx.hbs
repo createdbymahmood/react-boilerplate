@@ -1,4 +1,4 @@
-import { FC ,ComponentPropsWithoutRef } from "react";
+import { FC } from "react";
 /* components */
 /* modules */
 import clsx from 'clsx';
@@ -11,16 +11,12 @@ import { translations } from 'services/i18n/translations';
 import s from './{{properCase name}}.module.scss'
 /* types */
 
+type Props = {}
 
-type CommonProps = {};
-
-type Props = Omit<ComponentPropsWithoutRef<'div'>, keyof CommonProps> &
-    CommonProps;
-
-    export const {{properCase name}}: FC<Props> = ({ className, ...restProps }) => {
+    export const {{properCase name}}: FC<Props> = (props) => {
         const { t } = useTranslation();
 
-        return <div className={clsx(className, s.{{camelCase name}})}>
+        return <div className={s.{{camelCase name}} } >
             {{properCase name}}
         </div>;
         };
