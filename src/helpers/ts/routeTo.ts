@@ -1,16 +1,21 @@
 import { generatePath } from 'react-router-dom';
-import { stringify } from 'qs';
-import get from 'lodash/get';
+import { stringify } from 'query-string';
 import { AppRoutes } from 'constants/AppRoutes';
+import { get } from 'lodash';
 
 type PathType = keyof typeof AppRoutes;
-type ParamsType = { [paramName: string]: string | number | boolean };
+type ParamsType = any; // FIXME;
 
-export const routeTo = (
+export function routeTo(
     path: PathType,
     params?: ParamsType,
     queryString?: object,
-) => {
+) {
     const url = generatePath(get(AppRoutes, path), params);
-    return queryString ? `${url}?${stringify(queryString)}` : url;
-};
+
+    if (queryString) {
+        return `${url}?${stringify(queryString)}`;
+    }
+
+    return url;
+}

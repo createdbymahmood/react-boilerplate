@@ -1,3 +1,3 @@
 export enum AppRoutes {
-    index = '/',
+    index = '/url',
 }

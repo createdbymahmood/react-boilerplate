@@ -1,3 +1,5 @@
+import { routeTo } from 'helpers/ts/routeTo';
+
 export default function Index() {
-    return <div>HOME PAGE</div>;
+    return <div>Salam</div>;
 }
