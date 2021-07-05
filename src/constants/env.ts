@@ -1,12 +1,6 @@
-import { isEqual } from 'lodash/fp';
-
-const nodeEnvIs = (key: 'development' | 'production' | 'test'): boolean => {
-    return isEqual(key)(process.env.NODE_ENV);
-};
-
-const isDevelopment = nodeEnvIs('development');
-const isProduction = nodeEnvIs('production');
-const isTest = nodeEnvIs('test');
+const isDevelopment = process.env.NODE_ENV === 'development';
+const isProduction = process.env.NODE_ENV === 'production';
+const isTest = process.env.NODE_ENV === 'test';
 
 const variables = { isDevelopment, isProduction, isTest };
 
