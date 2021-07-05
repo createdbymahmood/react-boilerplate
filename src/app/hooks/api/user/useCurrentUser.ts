@@ -1,5 +1,5 @@
 /* constants */
-import API_URLS from 'constants/ApiUrls';
+import API_URLS from 'constants/apiUrls';
 /* modules */
 import { UseQueryResult, useQuery, QueryObserverOptions } from 'react-query';
 /* services */
