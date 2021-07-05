@@ -1,37 +1,21 @@
-import { ComponentType } from 'react';
-import { ROUTES } from 'constants/routes';
+import { AppRoutes } from 'constants/AppRoutes';
+import { Route } from 'services/RouterService/RouteFactory';
 
 /* pages */
-import Home from '@pages/Home';
-import Dashboard from '@pages/Dashboard';
-
-export type Route = {
-    path: string;
-    component?: ComponentType;
-    to?: string;
-    config: {
-        private: boolean;
-    };
-};
+import Index from '@pages/Index';
 
 export const routes: Route[] = [
     {
-        path: ROUTES.home,
-        component: Home,
+        path: AppRoutes.index,
+        component: Index,
         config: {
             private: false,
         },
     },
-    {
-        path: ROUTES.dashboard,
-        component: Dashboard,
-        config: {
-            private: true,
-        },
-    },
+
     {
         path: '*',
-        to: ROUTES.home,
+        to: AppRoutes.index,
         config: {
             private: false,
         },

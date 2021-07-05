@@ -5,7 +5,7 @@ import en from './en/translation.json';
 import { convertLanguageJsonToObject } from './translations';
 
 /* constants */
-import ENV from 'constants/env';
+import ENV from 'constants/Env';
 export const translationsJson = {
     en: {
         translation: en,

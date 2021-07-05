@@ -1,9 +1,9 @@
 import { generatePath } from 'react-router-dom';
 import { stringify } from 'qs';
 import get from 'lodash/get';
-import { ROUTES } from 'constants/routes';
+import { AppRoutes } from 'constants/AppRoutes';
 
-type PathType = keyof typeof ROUTES;
+type PathType = keyof typeof AppRoutes;
 type ParamsType = { [paramName: string]: string | number | boolean };
 
 export const routeTo = (
@@ -11,6 +11,6 @@ export const routeTo = (
     params?: ParamsType,
     queryString?: object,
 ) => {
-    const url = generatePath(get(ROUTES, path), params);
+    const url = generatePath(get(AppRoutes, path), params);
     return queryString ? `${url}?${stringify(queryString)}` : url;
 };

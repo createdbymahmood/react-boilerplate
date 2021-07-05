@@ -1,10 +1,13 @@
-import { Redirect, Switch } from 'react-router-dom';
-import { Route as RouteComponent, PrivateRoute } from '@components';
-/* helpers */
+import { PrivateRoute } from '@components';
 import { map, uniqueId } from 'lodash/fp';
-import { Route, routes } from './routes';
+import { ComponentType } from 'react';
+import { Switch, Redirect, Route as RouteComponent } from 'react-router-dom';
 
-export default function RouteFactory() {
+type RouteFactoryProps = {
+    routes: Route[];
+};
+
+export default function RouteFactory({ routes }: RouteFactoryProps) {
     return <Switch>{renderRoutes(routes)}</Switch>;
 }
 
@@ -25,3 +28,12 @@ const renderRoutes = map<Route, JSX.Element>(route => {
 
     return <RouteComponent key={key} path={path} component={Component} exact />;
 });
+
+export type Route = {
+    path: string;
+    component?: ComponentType;
+    to?: string;
+    config: {
+        private: boolean;
+    };
+};

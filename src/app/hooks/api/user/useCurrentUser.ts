@@ -1,9 +1,9 @@
 /* constants */
-import API_URLS from 'constants/apiUrls';
+import API_URLS from 'constants/ApiUrls';
 /* modules */
 import { UseQueryResult, useQuery, QueryObserverOptions } from 'react-query';
 /* services */
-import xhrService from 'services/xhrService';
+import xhrService from 'services/XhrService';
 /* types */
 import * as User from '@entities/user';
 import * as Server from '@entities/server';

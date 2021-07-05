@@ -1,7 +1,6 @@
 import { ComponentType } from 'react';
 /* components */
-import { Route } from '@components/Route';
-import { Spinner } from '@components/Spinner';
+import { Route } from 'react-router-dom';
 /* modules */
 import { useCurrentUser } from '@hooks/api';
 import { Redirect, RouteComponentProps } from 'react-router';
@@ -18,19 +17,22 @@ type Props = $ElementProps<typeof Route> & {
     component: ComponentType;
 };
 
-export const PrivateRoute = ({ component: Component, ...rest }: Props) => {
+export function PrivateRoute({
+    component: Component,
+    ...rest
+}: Props): JSX.Element {
     const { data, isLoading, isError } = useCurrentUser({
         retry: false,
         staleTime: 10 * 60 * 1000, // 10 mins
     });
 
     const UnauthorizedRedirectionConfig: History.LocationDescriptor = {
-        pathname: routeTo('home'),
+        pathname: routeTo('index'),
         state: { from: rest.location },
     };
 
     if (isLoading) {
-        return <Spinner />;
+        return <div>Loading....</div>;
     }
 
     if (isError) {
@@ -47,4 +49,4 @@ export const PrivateRoute = ({ component: Component, ...rest }: Props) => {
     };
 
     return <Route {...rest} render={renderComponent} />;
-};
+}
