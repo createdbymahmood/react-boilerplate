@@ -12,7 +12,6 @@ export const routes: Route[] = [
             private: false,
         },
     },
-
     {
         path: '*',
         to: AppRoutes.index,

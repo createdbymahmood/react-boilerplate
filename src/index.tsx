@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 
 /* PWA setup */
@@ -11,17 +10,12 @@ import Application from 'app';
 import reportWebVitals from 'reportWebVitals';
 import AppProviders from 'services/AppProviders';
 
-/* Initialize languages */
-import 'services/i18n/i18n';
-
-const MOUNT_NODE = document.getElementById('root') as HTMLElement;
+const MOUNT_NODE = document.getElementById('app') as HTMLElement;
 
 ReactDOM.render(
-    <React.StrictMode>
-        <AppProviders>
-            <Application />
-        </AppProviders>
-    </React.StrictMode>,
+    <AppProviders>
+        <Application />
+    </AppProviders>,
     MOUNT_NODE,
 );
 
