@@ -3,7 +3,7 @@ import API_URLS from 'constants/ApiUrls';
 /* modules */
 import { UseQueryResult, useQuery, QueryObserverOptions } from 'react-query';
 /* services */
-import xhrService from 'services/XhrService';
+import xhrService from 'services/xhrService';
 /* types */
 import * as User from '@entities/user';
 import * as Server from '@entities/server';

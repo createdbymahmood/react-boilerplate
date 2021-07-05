@@ -3,7 +3,7 @@ import API_URLS from 'constants/ApiUrls';
 /* modules */
 import { useMutation, UseMutationResult } from 'react-query';
 /* services */
-import xhrService, { AxiosError } from 'services/XhrService';
+import xhrService, { AxiosError } from 'services/xhrService';
 import { queryClient } from 'services/ReactQuery';
 /* types */
 import * as User from '@entities/user';

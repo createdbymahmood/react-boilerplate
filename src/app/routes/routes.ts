@@ -1,5 +1,5 @@
 import { AppRoutes } from 'constants/AppRoutes';
-import { Route } from 'services/RouterService/RouteFactory';
+import { Route } from 'services/routerService/RouteFactory';
 
 /* pages */
 import Index from '@pages/Index';

@@ -12,7 +12,7 @@ import reportWebVitals from 'reportWebVitals';
 import AppProviders from 'services/AppProviders';
 
 /* Initialize languages */
-import 'services/I18n/i18n';
+import 'services/i18n/i18n';
 
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
