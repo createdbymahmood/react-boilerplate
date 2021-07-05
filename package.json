@@ -4,13 +4,9 @@
     "private": true,
     "dependencies": {
         "@craco/craco": "6.1.2",
-        "@tailwindcss/postcss7-compat": "2.1.2",
         "@testing-library/jest-dom": "5.12.0",
         "@testing-library/react": "11.2.6",
         "@testing-library/user-event": "13.1.8",
-        "@types/async": "3.2.6",
-        "async": "3.2.0",
-        "autoprefixer": "9",
         "axios": "0.21.1",
         "babel-plugin-lodash": "3.3.4",
         "clsx": "1.1.1",
@@ -21,7 +17,6 @@
         "immer": "9.0.2",
         "lodash": "4.17.21",
         "nprogress": "0.2.0",
-        "postcss": "7",
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "react-helmet-async": "1.0.9",
@@ -31,8 +26,6 @@
         "react-scripts": "4.0.3",
         "react-use": "17.2.4",
         "sass": "1.32.12",
-        "shelljs": "0.8.4",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat",
         "typescript": "4.1.2",
         "web-vitals": "1.1.1",
         "workbox-background-sync": "6.1.5",
@@ -87,10 +80,7 @@
         "eslint-config-prettier": "8.3.0",
         "eslint-plugin-prettier": "3.4.0",
         "eslint-plugin-react-hooks": "4.2.0",
-        "plop": "2.7.4",
         "prettier": "2.2.1",
-        "tailwindcss-pseudo-elements": "2.0.0",
-        "type-fest": "1.0.2",
         "webpackbar": "5.0.0-3"
     }
 }
