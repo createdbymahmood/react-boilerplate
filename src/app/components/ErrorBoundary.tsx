@@ -1,13 +1,10 @@
 import { ReactNode } from 'react';
 import {
     ErrorBoundary as ReactErrorBoundary,
-    ErrorBoundaryProps,
     FallbackProps,
 } from 'react-error-boundary';
 
-export function ErrorBoundary(
-    props: ErrorBoundaryProps & { children: ReactNode },
-): JSX.Element {
+export function ErrorBoundary(props: { children: ReactNode }): JSX.Element {
     return (
         <ReactErrorBoundary
             FallbackComponent={ErrorFallback}
