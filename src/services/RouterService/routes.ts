@@ -1,10 +1,11 @@
 import { AppRoutes } from 'constants/AppRoutes';
+import { lazyLoad } from 'helpers/react/loadable';
 import { Route } from 'services/routerService/RouteFactory';
 
 /* pages */
-import Index from '@pages/Index';
+const Index = lazyLoad(() => import('@pages/Index'));
 
-const routes: Route[] = [
+export const routes: Route[] = [
     {
         path: AppRoutes.index,
         component: Index,
