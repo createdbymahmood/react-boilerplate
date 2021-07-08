@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
 
 /* Components */
@@ -7,6 +6,8 @@ import { ErrorBoundary } from '@components';
 
 /* Services */
 import { ReactQueryService } from 'services/ReactQuery';
+import { HelmetService } from 'services/HelmetService';
+import { RouterService } from 'services/routerService/RouterService';
 
 /* Initialize languages */
 import 'services/i18n/i18n';
@@ -19,11 +20,11 @@ export default function AppProviders({ children }: AppProvidersProps) {
     return (
         <React.StrictMode>
             <ErrorBoundary>
-                <HelmetProvider>
+                <HelmetService>
                     <ReactQueryService>
-                        <BrowserRouter>{children}</BrowserRouter>
+                        <RouterService>{children}</RouterService>
                     </ReactQueryService>
-                </HelmetProvider>
+                </HelmetService>
             </ErrorBoundary>
         </React.StrictMode>
     );
