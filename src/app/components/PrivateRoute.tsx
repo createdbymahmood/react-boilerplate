@@ -27,7 +27,7 @@ export function PrivateRoute({
     });
 
     const UnauthorizedRedirectionConfig: History.LocationDescriptor = {
-        pathname: createRoute('index'),
+        pathname: createRoute('Index'),
         state: { from: rest.location },
     };
 
