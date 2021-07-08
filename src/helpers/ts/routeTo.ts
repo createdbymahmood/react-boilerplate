@@ -4,7 +4,7 @@ import { AppRoutes } from 'constants/AppRoutes';
 import { get } from 'lodash';
 
 type PathType = keyof typeof AppRoutes;
-type ParamsType = any; // FIXME;
+type ParamsType = { [paramName: string]: string | number | boolean };
 
 export function routeTo(
     path: PathType,

@@ -1,3 +1,3 @@
-export enum AppRoutes {
-    index = '/url',
-}
+export const AppRoutes = {
+    index: '/url',
+};

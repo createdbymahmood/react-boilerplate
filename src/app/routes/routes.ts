@@ -4,7 +4,7 @@ import { Route } from 'services/routerService/RouteFactory';
 /* pages */
 import Index from '@pages/Index';
 
-export const routes: Route[] = [
+const routes: Route[] = [
     {
         path: AppRoutes.index,
         component: Index,
@@ -20,3 +20,5 @@ export const routes: Route[] = [
         },
     },
 ];
+
+export default routes;
