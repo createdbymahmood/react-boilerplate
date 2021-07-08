@@ -6,7 +6,7 @@ import { get } from 'lodash';
 type PathType = keyof typeof AppRoutes;
 type ParamsType = { [paramName: string]: string | number | boolean };
 
-export function routeTo(
+export function createRoute(
     path: PathType,
     params?: ParamsType,
     queryString?: object,

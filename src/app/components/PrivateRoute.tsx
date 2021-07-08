@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import { useCurrentUser } from '@hooks/api';
 import { Redirect, RouteComponentProps } from 'react-router';
 /* helpers */
-import { routeTo } from 'helpers/ts/routeTo';
+import { createRoute } from 'helpers/ts/createRoute';
 /* assets */
 /* services */
 /* constants */
@@ -27,7 +27,7 @@ export function PrivateRoute({
     });
 
     const UnauthorizedRedirectionConfig: History.LocationDescriptor = {
-        pathname: routeTo('index'),
+        pathname: createRoute('index'),
         state: { from: rest.location },
     };
 
