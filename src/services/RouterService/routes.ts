@@ -7,7 +7,7 @@ const Index = lazyLoad(() => import('@pages/Index'));
 
 export const routes: Route[] = [
     {
-        path: AppRoutes.index,
+        path: AppRoutes.Index,
         component: Index,
         config: {
             private: false,
@@ -15,7 +15,7 @@ export const routes: Route[] = [
     },
     {
         path: '*',
-        to: AppRoutes.index,
+        to: AppRoutes.Index,
         config: {
             private: false,
         },
