@@ -1,10 +1,11 @@
-import { createRoute } from 'helpers/ts/createRoute';
-import { Link } from 'react-router-dom';
+import { Link } from '@components';
 
 export default function Index() {
     return (
         <div>
-            <Link to={createRoute('Index')}>INDEX ROUTE</Link>
+            <Link to="Profile" params={{ userId: 'Salam' }}>
+                Salam
+            </Link>
         </div>
     );
 }

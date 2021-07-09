@@ -1,19 +1,15 @@
 import { ComponentType } from 'react';
-/* components */
-import { Route } from 'react-router-dom';
-/* modules */
+/* Components */
+import { Route, RouteProps } from 'react-router-dom';
+/* Modules */
 import { useCurrentUser } from '@hooks/api';
 import { Redirect, RouteComponentProps } from 'react-router';
-/* helpers */
+/* Helpers */
 import { createRoute } from 'helpers/ts/createRoute';
-/* assets */
-/* services */
-/* constants */
-/* types */
-import { $ElementProps } from '@entities/gobal';
+/* Types */
 import { History } from 'history';
 
-type Props = $ElementProps<typeof Route> & {
+type Props = RouteProps & {
     component: ComponentType;
 };
 
