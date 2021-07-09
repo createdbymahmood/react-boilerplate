@@ -7,7 +7,8 @@ export function HelmetService({
 }: HelmetProps & { children: ReactNode }) {
     return (
         <HelmetProvider>
-            <Helmet {...props} />;
+            <Helmet {...props} />
+            {children}
         </HelmetProvider>
     );
 }
