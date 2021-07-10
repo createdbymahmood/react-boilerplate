@@ -36,11 +36,6 @@ export interface Breakpoints {
     down: (key: Breakpoint | number) => string;
     between: (start: Breakpoint | number, end: Breakpoint | number) => string;
     only: (key: Breakpoint) => string;
-    /**
-     * @deprecated
-     * Use the `values` prop instead
-     */
-    width: (key: Breakpoint) => number;
 }
 
 export type BreakpointsOptions = Partial<
@@ -115,22 +110,6 @@ export default function createBreakpoints(
 
     let warnedOnce = false;
 
-    function width(key) {
-        if (process.env.NODE_ENV !== 'production') {
-            if (!warnedOnce) {
-                warnedOnce = true;
-                console.warn(
-                    [
-                        "Material-UI: The `theme.breakpoints.width` utility is deprecated because it's redundant.",
-                        'Use the `theme.breakpoints.values` instead.',
-                    ].join('\n'),
-                );
-            }
-        }
-
-        return values[key];
-    }
-
     return {
         keys,
         values,
@@ -138,7 +117,6 @@ export default function createBreakpoints(
         down,
         between,
         only,
-        width,
         ...other,
     };
 }

@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 
 /* Components */
 import { ErrorBoundary } from '@components';
@@ -8,6 +7,7 @@ import { ErrorBoundary } from '@components';
 import { ReactQueryService } from 'services/ReactQuery';
 import { HelmetService } from 'services/HelmetService';
 import { RouterService } from 'services/routerService/RouterService';
+import ThemeProvider from 'services/theme/ThemeProvider';
 
 /* Initialize languages */
 import 'services/i18n/i18n';
@@ -22,7 +22,9 @@ export default function AppProviders({ children }: AppProvidersProps) {
             <ErrorBoundary>
                 <HelmetService>
                     <ReactQueryService>
-                        <RouterService>{children}</RouterService>
+                        <ThemeProvider>
+                            <RouterService>{children}</RouterService>
+                        </ThemeProvider>
                     </ReactQueryService>
                 </HelmetService>
             </ErrorBoundary>

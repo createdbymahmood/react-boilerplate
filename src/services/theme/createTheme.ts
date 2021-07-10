@@ -28,7 +28,6 @@ export interface ThemeOptions {
     transitions?: TransitionsOptions;
     typography?: TypographyOptions | ((palette: Palette) => TypographyOptions);
     zIndex?: ZIndexOptions;
-    unstable_strictMode?: boolean;
 }
 
 export interface Theme {

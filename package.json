@@ -4,6 +4,7 @@
     "private": true,
     "dependencies": {
         "@craco/craco": "6.2.0",
+        "@material-ui/styles": "4.11.4",
         "@testing-library/jest-dom": "5.14.1",
         "@testing-library/react": "12.0.0",
         "@testing-library/user-event": "13.1.9",
@@ -11,6 +12,7 @@
         "babel-plugin-lodash": "3.3.4",
         "clsx": "1.1.1",
         "craco-alias": "3.0.1",
+        "hoist-non-react-statics": "3.3.2",
         "husky": "7.0.1",
         "i18next": "20.3.2",
         "i18next-browser-languagedetector": "6.1.2",
