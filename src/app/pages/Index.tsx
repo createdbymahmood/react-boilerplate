@@ -32,4 +32,5 @@ export const Index = withWidth()(({ width }: IndexProps) => {
         </div>
     );
 });
-export default withWidth()(Index);
+
+export default Index;
