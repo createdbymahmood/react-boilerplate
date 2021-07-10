@@ -1,38 +1,13 @@
-import { Link } from '@components';
-import { makeStyles } from '@material-ui/styles';
-import { Theme } from 'services/theme/createTheme';
+import styled from 'styled-components';
 
-type Props = {
-    isSticky: boolean;
-};
-const generateId = () => Math.random().toString(36).substring(7);
+import { space, layout, color, compose } from 'styled-system';
 
-const useStyles = makeStyles<Theme, Props>(
-    theme => ({
-        root: {
-            background: theme.palette.common.black,
-            color: theme.palette.common.white,
-        },
+const Box = styled('div')(compose(space, layout, color));
 
-        x: props => {
-            console.log(props.isSticky);
-            console.log(theme.typography);
-            return {};
-        },
-    }),
-    { classNamePrefix: 'Salam', generateId },
-);
-
-export const Index = () => {
-    const cls = useStyles({ isSticky: true });
-
+export default function Index() {
     return (
-        <div className={cls.root}>
-            <Link to="Profile" params={{ userId: 'Salam' }}>
-                Salam
-            </Link>
-        </div>
+        <Box color="red" bg="white">
+            Salam
+        </Box>
     );
-};
-
-export default Index;
+}
