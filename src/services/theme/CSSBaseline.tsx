@@ -1,12 +1,17 @@
-import { withStyles } from '@material-ui/styles';
+import { CSSProperties, withStyles } from '@material-ui/styles';
 import React from 'react';
 
-export const html = {
+export const html: CSSProperties = {
     WebkitFontSmoothing: 'antialiased', // Antialiasing.
     MozOsxFontSmoothing: 'grayscale', // Antialiasing.
     // Change from `box-sizing: content-box` so that `width`
     // is not affected by `padding` or `border`.
     boxSizing: 'border-box',
+};
+
+export const a: CSSProperties = {
+    textDecoration: 'none',
+    color: 'inherit',
 };
 
 export const body = theme => ({
@@ -37,6 +42,7 @@ export const styles = theme => ({
                 backgroundColor: theme.palette.background.default,
             },
         },
+        a,
     },
 });
 

@@ -3,7 +3,7 @@ import { ThemeProvider as OriginalThemeProvider } from '@material-ui/styles';
 import createTheme from './createTheme';
 import CSSBaseline from './CSSBaseline';
 
-const lightTheme = createTheme({ direction: 'rtl' });
+const lightTheme = createTheme({});
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
     return (
