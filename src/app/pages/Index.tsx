@@ -1,7 +1,7 @@
 import { Link } from '@components';
+import Text from '@components/Typography';
 import { makeStyles } from '@material-ui/styles';
 import { Theme } from 'services/theme/createTheme';
-import withWidth, { WithWidthProps } from 'services/theme/withWidth';
 
 type Props = {
     isSticky: boolean;
@@ -15,22 +15,22 @@ const useStyles = makeStyles<Theme, Props>(theme => ({
 
     x: props => {
         console.log(props.isSticky);
+        console.log(theme.typography);
         return {};
     },
 }));
 
-type IndexProps = WithWidthProps;
-
-export const Index = withWidth()(({ width }: IndexProps) => {
+export const Index = () => {
     const cls = useStyles({ isSticky: true });
 
     return (
         <div className={cls.root}>
+            <Text>Salam</Text>
             <Link to="Profile" params={{ userId: 'Salam' }}>
                 Salam
             </Link>
         </div>
     );
-});
+};
 
 export default Index;
