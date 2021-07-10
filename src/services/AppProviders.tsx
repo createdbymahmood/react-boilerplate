@@ -7,7 +7,6 @@ import { ErrorBoundary } from '@components';
 import { ReactQueryService } from 'services/ReactQuery';
 import { HelmetService } from 'services/HelmetService';
 import { RouterService } from 'services/routerService/RouterService';
-import ThemeProvider from 'services/theme/ThemeProvider';
 
 /* Initialize languages */
 import 'services/i18n/i18n';
@@ -22,9 +21,7 @@ export default function AppProviders({ children }: AppProvidersProps) {
             <ErrorBoundary>
                 <HelmetService>
                     <ReactQueryService>
-                        <ThemeProvider>
-                            <RouterService>{children}</RouterService>
-                        </ThemeProvider>
+                        <RouterService>{children}</RouterService>
                     </ReactQueryService>
                 </HelmetService>
             </ErrorBoundary>
