@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getThemeProps, useTheme } from '@material-ui/styles';
-import { Theme } from './createTheme';
+import { Theme } from 'services/theme/createTheme';
 
 export interface Options {
     defaultMatches?: boolean;

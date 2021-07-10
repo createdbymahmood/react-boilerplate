@@ -2,7 +2,7 @@ import { Breakpoint, keys as breakpointKeys } from './createBreakpoints';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useTheme, getThemeProps } from '@material-ui/styles';
-import useMediaQuery from './useMediaQuery';
+import useMediaQuery from '@hooks/useMediaQuery';
 
 const useEnhancedEffect =
     typeof window === 'undefined' ? useEffect : useLayoutEffect;
