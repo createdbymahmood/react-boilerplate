@@ -1,6 +1,6 @@
 import { Link as ReactRouterLink, LinkProps } from 'react-router-dom';
 import { ExtractRouteParams } from 'react-router';
-import { AppRoutes } from 'constants/AppRoutes';
+import { AppRoutes } from 'constants/appRoutes';
 import { createRoute } from 'helpers/ts/createRoute';
 
 type ExtractStringPropertyNames<T> = {

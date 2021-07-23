@@ -1,6 +1,6 @@
 import { generatePath } from 'react-router-dom';
 import { stringify } from 'query-string';
-import { AppRoutes } from 'constants/AppRoutes';
+import { AppRoutes } from 'constants/appRoutes';
 import { get } from 'lodash';
 
 type PathType = keyof typeof AppRoutes;

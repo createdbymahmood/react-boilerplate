@@ -1,4 +1,4 @@
-import { AppRoutes } from 'constants/AppRoutes';
+import { AppRoutes } from 'constants/appRoutes';
 import { lazyLoad } from 'helpers/react/loadable';
 import { Route } from 'services/routerService/RouteFactory';
 
