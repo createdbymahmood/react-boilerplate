@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorkerRegistration from 'services/serviceWorker/serviceWorkerRegistration';
 
 /* main app file */
-import Application from 'app';
+import Application from '@app/asd';
 
 /* services */
 import reportWebVitals from 'services/webVitals/reportWebVitals';
