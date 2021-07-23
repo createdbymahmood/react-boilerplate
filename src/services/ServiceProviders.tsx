@@ -11,11 +11,11 @@ import { RouterService } from 'services/router/RouterService';
 /* Initialize languages */
 import 'services/i18n/i18n';
 
-type AppProvidersProps = {
+type ServiceProvidersProps = {
     children: ReactNode;
 };
 
-export default function AppProviders({ children }: AppProvidersProps) {
+export default function ServiceProviders({ children }: ServiceProvidersProps) {
     return (
         <React.StrictMode>
             <ErrorBoundary>
