@@ -1,14 +1,6 @@
-import { ReactNode } from 'react';
-import { Helmet, HelmetProps, HelmetProvider } from 'react-helmet-async';
+import { PropsWithChildren } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 
-export function HelmetService({
-    children,
-    ...props
-}: HelmetProps & { children: ReactNode }) {
-    return (
-        <HelmetProvider>
-            <Helmet {...props} />
-            {children}
-        </HelmetProvider>
-    );
+export function HelmetService({ children }: PropsWithChildren<{}>) {
+    return <HelmetProvider>{children}</HelmetProvider>;
 }
