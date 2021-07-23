@@ -1,4 +1,4 @@
-import { AppRoutes } from 'constants/appRoutes';
+import { ROUTE_URLS } from 'constants/routeUrls';
 import { lazyLoad } from 'helpers/react/loadable';
 import { Route } from 'services/router/RouteFactory';
 
@@ -7,9 +7,9 @@ const Index = lazyLoad(
     () => import('@pages/Index' /* webpackChunkName: "Index" */),
 );
 
-export const routes: Route[] = [
+export const ROUTES_ARRAY: Route[] = [
     {
-        path: AppRoutes.Index,
+        path: ROUTE_URLS.Index,
         component: Index,
         config: {
             private: false,
@@ -17,11 +17,9 @@ export const routes: Route[] = [
     },
     {
         path: '*',
-        to: AppRoutes.Index,
+        to: ROUTE_URLS.Index,
         config: {
             private: false,
         },
     },
 ];
-
-export default routes;

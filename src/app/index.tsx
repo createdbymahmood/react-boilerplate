@@ -1,6 +1,6 @@
-import RouteFactory from 'services/router/RouteFactory';
-import Routes from 'services/router/routes';
+import { RouteFactory } from 'services/router/RouteFactory';
+import { ROUTES_ARRAY } from 'constants/routesArray';
 
 export default function App() {
-    return <RouteFactory routes={Routes} />;
+    return <RouteFactory routes={ROUTES_ARRAY} />;
 }

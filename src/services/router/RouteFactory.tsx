@@ -16,7 +16,7 @@ type RouteFactoryProps = {
     routes: Route[];
 };
 
-export default function RouteFactory({ routes }: RouteFactoryProps) {
+export function RouteFactory({ routes }: RouteFactoryProps) {
     return <Switch>{renderRoutes(routes)}</Switch>;
 }
 
