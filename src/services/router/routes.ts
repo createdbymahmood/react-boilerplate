@@ -3,7 +3,9 @@ import { lazyLoad } from 'helpers/react/loadable';
 import { Route } from 'services/router/RouteFactory';
 
 /* pages */
-const Index = lazyLoad(() => import('@pages/Index'));
+const Index = lazyLoad(
+    () => import('@pages/Index' /* webpackChunkName: "Index" */),
+);
 
 export const routes: Route[] = [
     {
