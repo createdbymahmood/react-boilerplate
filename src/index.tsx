@@ -1,13 +1,13 @@
 import ReactDOM from 'react-dom';
 
 /* PWA setup */
-import * as serviceWorkerRegistration from 'serviceWorkerRegistration';
+import * as serviceWorkerRegistration from 'services/serviceWorker/serviceWorkerRegistration';
 
 /* main app file */
 import Application from 'app';
 
 /* services */
-import reportWebVitals from 'reportWebVitals';
+import reportWebVitals from 'services/webVitals/reportWebVitals';
 import ServiceProviders from 'services/ServiceProviders';
 
 const MOUNT_NODE = document.getElementById('app') as HTMLElement;
