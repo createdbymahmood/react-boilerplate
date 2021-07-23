@@ -1,6 +1,6 @@
 import { AppRoutes } from 'constants/appRoutes';
 import { lazyLoad } from 'helpers/react/loadable';
-import { Route } from 'services/routerService/RouteFactory';
+import { Route } from 'services/router/RouteFactory';
 
 /* pages */
 const Index = lazyLoad(() => import('@pages/Index'));

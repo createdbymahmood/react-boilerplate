@@ -1,5 +1,5 @@
-import RouteFactory from 'services/routerService/RouteFactory';
-import Routes from 'services/routerService/routes';
+import RouteFactory from 'services/router/RouteFactory';
+import Routes from 'services/router/routes';
 
 export default function App() {
     return <RouteFactory routes={Routes} />;

@@ -5,8 +5,8 @@ import { ErrorBoundary } from '@components';
 
 /* Services */
 import { ReactQueryService } from 'services/ReactQuery';
-import { HelmetService } from 'services/HelmetService';
-import { RouterService } from 'services/routerService/RouterService';
+import { HelmetService } from 'services/Helmet';
+import { RouterService } from 'services/router/RouterService';
 
 /* Initialize languages */
 import 'services/i18n/i18n';
