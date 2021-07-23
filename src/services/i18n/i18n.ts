@@ -5,7 +5,7 @@ import en from './en/translation.json';
 import { convertLanguageJsonToObject } from './translations';
 
 /* constants */
-import ENV from 'constants/env';
+import env from 'constants/env';
 export const translationsJson = {
     en: {
         translation: en,
@@ -26,7 +26,7 @@ export const i18n = i18next
     .init({
         resources: translationsJson,
         fallbackLng: 'en',
-        debug: ENV.isDevelopment,
+        debug: env.IS_DEV,
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
         },
