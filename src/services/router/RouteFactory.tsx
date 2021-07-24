@@ -28,10 +28,14 @@ const renderRoutes = map<Route, JSX.Element>(route => {
     if (to || !Component)
         return <Redirect key={key} from={path} to={to as string} />;
 
-    if (config.private)
-        return (
-            <PrivateRoute key={key} path={path} component={Component} exact />
-        );
+    const routeProps = {
+        exact: true,
+        component: Component,
+        path,
+        key,
+    };
 
-    return <RouteComponent key={key} path={path} component={Component} exact />;
+    if (config.private) return <PrivateRoute {...routeProps} />;
+
+    return <RouteComponent {...routeProps} />;
 });
