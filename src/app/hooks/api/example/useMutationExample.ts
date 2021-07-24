@@ -3,17 +3,17 @@ import API_URLS from 'constants/apiUrls';
 /* modules */
 import { useMutation, UseMutationResult } from 'react-query';
 /* services */
-import xhrService, { AxiosError } from 'services/xhrService';
+import xhrService, { AxiosError } from 'services/xhr';
 import { queryClient } from 'services/ReactQuery';
 /* types */
 import * as User from '@entities/user';
 import * as Server from '@entities/server';
-import * as G from '@entities/gobal';
+import * as Api from '@entities/api';
 
 type TData = User.Model;
 type TError = AxiosError<Server.Error>;
 type TVariables = User.LoginPayload;
-type TContext = G.MutationContext;
+type TContext = Api.MutationContext;
 
 async function fn(variables: TVariables): Promise<TData> {
     return (await xhrService.post<TData>(API_URLS.login, variables)).data;

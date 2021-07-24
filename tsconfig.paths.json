@@ -6,7 +6,9 @@
             "@components": ["app/components/index.ts"],
             "@components/*": ["app/components/*"],
             "@pages/*": ["app/pages/*"],
-            "@hooks/*": ["app/hooks/*"]
+            "@hooks/*": ["app/hooks/*"],
+            "@store/*": ["app/store/*"],
+            "@app/*": ["app/*"]
         }
     }
 }

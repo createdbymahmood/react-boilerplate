@@ -1,7 +1,3 @@
-export type MutationContext = {
-    rollback: () => void;
-};
-
 export type $ElementProps<T> = T extends React.ComponentType<infer Props>
     ? Props extends object
         ? Props
@@ -20,7 +16,7 @@ export type Path<T> = PathImpl<T, keyof T> | keyof T;
 
 export type PathValue<
     T,
-    P extends Path<T>
+    P extends Path<T>,
 > = P extends `${infer K}.${infer Rest}`
     ? K extends keyof T
         ? Rest extends Path<T[K]>

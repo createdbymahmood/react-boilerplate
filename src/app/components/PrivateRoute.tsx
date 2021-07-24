@@ -1,36 +1,34 @@
 import { ComponentType } from 'react';
-/* components */
-import { Route } from '@components/Route';
-import { Spinner } from '@components/Spinner';
-/* modules */
+/* Components */
+import { Route, RouteProps } from 'react-router-dom';
+/* Modules */
 import { useCurrentUser } from '@hooks/api';
 import { Redirect, RouteComponentProps } from 'react-router';
-/* helpers */
-import { routeTo } from 'helpers/ts/routeTo';
-/* assets */
-/* services */
-/* constants */
-/* types */
-import { $ElementProps } from '@entities/gobal';
+/* Helpers */
+import { createRoute } from 'helpers/ts/createRoute';
+/* Types */
 import { History } from 'history';
 
-type Props = $ElementProps<typeof Route> & {
+type Props = RouteProps & {
     component: ComponentType;
 };
 
-export const PrivateRoute = ({ component: Component, ...rest }: Props) => {
+export function PrivateRoute({
+    component: Component,
+    ...rest
+}: Props): JSX.Element {
     const { data, isLoading, isError } = useCurrentUser({
         retry: false,
         staleTime: 10 * 60 * 1000, // 10 mins
     });
 
     const UnauthorizedRedirectionConfig: History.LocationDescriptor = {
-        pathname: routeTo('home'),
+        pathname: createRoute('Index'),
         state: { from: rest.location },
     };
 
     if (isLoading) {
-        return <Spinner />;
+        return <div>Loading....</div>;
     }
 
     if (isError) {
@@ -47,4 +45,4 @@ export const PrivateRoute = ({ component: Component, ...rest }: Props) => {
     };
 
     return <Route {...rest} render={renderComponent} />;
-};
+}

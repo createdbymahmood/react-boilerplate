@@ -1,30 +1,21 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 
 /* PWA setup */
-import * as serviceWorkerRegistration from 'serviceWorkerRegistration';
+import * as serviceWorkerRegistration from 'services/serviceWorker/serviceWorkerRegistration';
 
 /* main app file */
-import Application from 'app';
+import Application from '@app/Index';
 
 /* services */
-import reportWebVitals from 'reportWebVitals';
-import AppProviders from 'services/AppProviders';
+import reportWebVitals from 'services/webVitals/reportWebVitals';
+import ServiceProviders from 'services/ServiceProviders';
 
-/* Initialize languages */
-import 'services/i18n/i18n';
-
-/* styles */
-import 'assets/styles/tw.css';
-
-const MOUNT_NODE = document.getElementById('root') as HTMLElement;
+const MOUNT_NODE = document.getElementById('app') as HTMLElement;
 
 ReactDOM.render(
-    <React.StrictMode>
-        <AppProviders>
-            <Application />
-        </AppProviders>
-    </React.StrictMode>,
+    <ServiceProviders>
+        <Application />
+    </ServiceProviders>,
     MOUNT_NODE,
 );
 

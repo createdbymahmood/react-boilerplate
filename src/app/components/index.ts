@@ -1,2 +1,3 @@
 export * from './PrivateRoute';
-export * from './Route';
+export * from './ErrorBoundary';
+export * from './Link';
