@@ -11,7 +11,7 @@ export function createRoute(
     params?: ParamsType,
     queryString?: object,
 ) {
-    const url = generatePath(get(ROUTE_URLS, path), params);
+    const url = generatePath(get(ROUTE_URLS, path), params as any);
 
     if (queryString) {
         return `${url}?${stringify(queryString)}`;

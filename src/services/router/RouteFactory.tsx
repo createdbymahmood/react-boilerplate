@@ -7,6 +7,7 @@ export type Route = {
     path: string;
     component?: ComponentType;
     to?: string;
+    exact?: boolean;
     config: {
         private: boolean;
     };
@@ -21,7 +22,7 @@ export function RouteFactory({ routes }: RouteFactoryProps) {
 }
 
 const renderRoutes = map<Route, JSX.Element>(route => {
-    const { component: Component, path, to, config } = route;
+    const { component: Component, path, to, config, exact = true } = route;
 
     const key = uniqueId(`route-${path}`);
 
@@ -29,8 +30,8 @@ const renderRoutes = map<Route, JSX.Element>(route => {
         return <Redirect key={key} from={path} to={to as string} />;
 
     const routeProps = {
-        exact: true,
         component: Component,
+        exact,
         path,
         key,
     };
