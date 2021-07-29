@@ -4,5 +4,6 @@
     "tabWidth": 4,
     "singleQuote": true,
     "trailingComma": "all",
-    "arrowParens": "avoid"
+    "arrowParens": "avoid",
+    "jsxSingleQuote": true
 }
