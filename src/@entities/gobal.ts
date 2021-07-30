@@ -26,3 +26,5 @@ export type PathValue<
     : P extends keyof T
     ? T[P]
     : never;
+
+export type Maybe<T> = T | undefined;
