@@ -10,13 +10,15 @@ import { createRoute } from 'helpers/ts/createRoute';
 import { History } from 'history';
 
 type Props = RouteProps & {
-    component: ComponentType;
+    component?: ComponentType;
 };
 
 export function PrivateRoute({
     component: Component,
     ...rest
 }: Props): JSX.Element {
+    if (!Component) return <></>;
+
     const { data, isLoading, isError } = useCurrentUser({
         retry: false,
         staleTime: 10 * 60 * 1000, // 10 mins
