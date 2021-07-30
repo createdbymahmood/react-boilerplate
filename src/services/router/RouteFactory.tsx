@@ -1,4 +1,5 @@
 import { PrivateRoute } from '@components';
+import { Maybe } from '@entities/gobal';
 import { isEmpty } from 'lodash';
 import { map, uniqueId } from 'lodash/fp';
 import { ComponentType } from 'react';
@@ -19,9 +20,9 @@ type RouteFactoryProps = {
     routes: Route[];
 };
 
-export function RouteFactory({ routes }: RouteFactoryProps) {
+export const RouteFactory = ({ routes }: RouteFactoryProps) => {
     return <Switch>{renderRoutes(routes)}</Switch>;
-}
+};
 
 const renderRoutes = map<Route, JSX.Element>(route => {
     const {
@@ -55,7 +56,11 @@ const renderRoutes = map<Route, JSX.Element>(route => {
     return <RouteComponent {...routeProps}>{componentC}</RouteComponent>;
 });
 
-const renderChildren = (children: Route[], exact: boolean, path: string) => {
+const renderChildren = (
+    children: Route[],
+    exact: boolean,
+    path: string,
+): Maybe<JSX.Element[]> => {
     if (isEmpty(children)) return;
 
     if (exact)
