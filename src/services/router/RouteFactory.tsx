@@ -7,7 +7,7 @@ import { Switch, Redirect, Route as RouteComponent } from 'react-router-dom';
 
 export type Route = {
     path: string;
-    component?: ComponentType;
+    component?: ComponentType<any>;
     to?: string;
     exact?: boolean;
     config: {
@@ -36,8 +36,9 @@ const renderRoutes = map<Route, JSX.Element>(route => {
 
     const key = uniqueId(`route-${path}`);
 
-    if (to || !Component)
+    if (to || !Component) {
         return <Redirect key={key} from={path} to={to as string} />;
+    }
 
     const routeProps = {
         exact,
