@@ -1,4 +1,5 @@
 import { PrivateRoute } from '@components';
+import { isEmpty } from 'lodash';
 import { map, uniqueId } from 'lodash/fp';
 import { ComponentType } from 'react';
 import { Switch, Redirect, Route as RouteComponent } from 'react-router-dom';
@@ -11,6 +12,7 @@ export type Route = {
     config: {
         private: boolean;
     };
+    children?: Route[];
 };
 
 type RouteFactoryProps = {
@@ -22,7 +24,14 @@ export function RouteFactory({ routes }: RouteFactoryProps) {
 }
 
 const renderRoutes = map<Route, JSX.Element>(route => {
-    const { component: Component, path, to, config, exact = true } = route;
+    const {
+        component: Component,
+        path,
+        to,
+        config,
+        children = [],
+        exact = true,
+    } = route;
 
     const key = uniqueId(`route-${path}`);
 
@@ -30,13 +39,29 @@ const renderRoutes = map<Route, JSX.Element>(route => {
         return <Redirect key={key} from={path} to={to as string} />;
 
     const routeProps = {
-        component: Component,
         exact,
         path,
         key,
     };
 
-    if (config.private) return <PrivateRoute {...routeProps} />;
+    const componentC = (
+        <Component>{renderChildren(children, exact, path)}</Component>
+    );
 
-    return <RouteComponent {...routeProps} />;
+    if (config.private) {
+        return <PrivateRoute {...routeProps}>{componentC}</PrivateRoute>;
+    }
+
+    return <RouteComponent {...routeProps}>{componentC}</RouteComponent>;
 });
+
+const renderChildren = (children: Route[], exact: boolean, path: string) => {
+    if (isEmpty(children)) return;
+
+    if (exact)
+        throw new Error(
+            `Routes with children must NOT have property exact of true! [${path}]`,
+        );
+
+    return renderRoutes(children);
+};
