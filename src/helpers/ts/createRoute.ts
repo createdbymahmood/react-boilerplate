@@ -6,15 +6,11 @@ import { ROUTE_URLS } from 'constants/routeUrls';
 type PathType = keyof typeof ROUTE_URLS;
 type ParamsType = { [paramName: string]: string | number | boolean };
 
-export function createRoute(
-    path: PathType,
-    params?: ParamsType,
-    queryString?: object,
-) {
-    const url = generatePath(get(ROUTE_URLS, path), params as any);
+export function createRoute(path: PathType, params?: ParamsType, qs?: object) {
+    const url = generatePath(get(ROUTE_URLS, path), params);
 
-    if (queryString) {
-        return `${url}?${stringify(queryString)}`;
+    if (qs) {
+        return `${url}?${stringify(qs)}`;
     }
 
     return url;
