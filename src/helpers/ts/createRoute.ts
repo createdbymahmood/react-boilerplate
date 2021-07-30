@@ -9,9 +9,7 @@ type ParamsType = { [paramName: string]: string | number | boolean };
 export function createRoute(path: PathType, params?: ParamsType, qs?: object) {
     const url = generatePath(get(ROUTE_URLS, path), params);
 
-    if (qs) {
-        return `${url}?${stringify(qs)}`;
-    }
+    if (qs) return `${url}?${stringify(qs)}`;
 
     return url;
 }
