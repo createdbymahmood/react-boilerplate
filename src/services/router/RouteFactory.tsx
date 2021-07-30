@@ -56,12 +56,23 @@ const renderRoutes = map<Route, JSX.Element>(route => {
     return <RouteComponent {...routeProps}>{componentC}</RouteComponent>;
 });
 
+const validateChildrenRoutesPath = (path: string) => (children: Route[]) => {
+    return !children.some(child => child.path.startsWith(`${path}/`));
+};
+
 const renderChildren = (
     children: Route[],
     exact: boolean,
     path: string,
 ): Maybe<JSX.Element[]> => {
+    /*  */
     if (isEmpty(children)) return;
+
+    /* Makes sure that all children path names are started with parent path name */
+    if (validateChildrenRoutesPath(path)(children))
+        throw new Error(
+            `Children path must be started with parent path! [${path}]`,
+        );
 
     if (exact)
         throw new Error(
