@@ -3,7 +3,7 @@ import { Maybe } from '@entities/gobal';
 import { isEmpty } from 'lodash';
 import { map, uniqueId } from 'lodash/fp';
 import { ComponentType } from 'react';
-import { Switch, Redirect, Route as RouteComponent } from 'react-router-dom';
+import { Switch, Redirect, Route as ReactRouterRoute } from 'react-router-dom';
 
 export type Route = {
     path: string;
@@ -46,15 +46,19 @@ const renderRoutes = map<Route, JSX.Element>(route => {
         key,
     };
 
-    const componentC = (
-        <Component>{renderChildren(children, exact, path)}</Component>
-    );
-
     if (config.private) {
-        return <PrivateRoute {...routeProps}>{componentC}</PrivateRoute>;
+        return (
+            <PrivateRoute {...routeProps}>
+                {renderComponent(Component, children, exact, path)}
+            </PrivateRoute>
+        );
     }
 
-    return <RouteComponent {...routeProps}>{componentC}</RouteComponent>;
+    return (
+        <ReactRouterRoute {...routeProps}>
+            {renderComponent(Component, children, exact, path)}
+        </ReactRouterRoute>
+    );
 });
 
 const validateChildrenRoutesPath = (path: string) => (children: Route[]) => {
@@ -81,4 +85,13 @@ const renderChildren = (
         );
 
     return renderRoutes(children);
+};
+
+const renderComponent = (
+    Component: ComponentType<any>,
+    children: Route[],
+    exact: boolean,
+    path: string,
+) => {
+    return <Component>{renderChildren(children, exact, path)}</Component>;
 };
