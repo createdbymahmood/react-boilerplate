@@ -8,6 +8,7 @@ import { createRoute } from 'helpers/ts/createRoute';
 import { ROUTE_URLS } from 'constants/routeUrls';
 import { ReactNode } from 'react';
 import { useLocation } from 'react-use';
+import { isFunction } from 'lodash';
 
 type ExtractStringPropertyNames<T> = {
     [K in keyof T]: T[K] extends string ? K : never;
@@ -25,37 +26,57 @@ export type PathParams = ExtractRouteParams<PATHS>;
 type TypedLinkProps<P extends AppRoutesPath> = {
     to: P;
     params?: PathParams;
-} & Omit<NavLinkProps, 'children'> & {
-        children: (isActive: boolean) => ReactNode;
-    };
+} & NavLinkProps;
 
-/**
- * Type-safe version of `react-router-dom/Link`.
- */
-export const Link = <P extends AppRoutesPath>({
+type TypedLinkPropsWithChildrenFunction<P extends AppRoutesPath> = {
+    to: P;
+    params?: PathParams;
+    children: (isActive: boolean) => ReactNode;
+} & Omit<NavLinkProps, 'children'>;
+
+export function Link<P extends AppRoutesPath>({
     to,
     params,
     children,
     ...props
-}: TypedLinkProps<P>) => {
-    const location = useLocation();
+}: TypedLinkProps<P>);
 
-    const getActive = () => {
-        const match = matchPath(createRoute(to, params), {
-            path: location.pathname,
-            exact: props.exact,
-        });
+export function Link<P extends AppRoutesPath>({
+    to,
+    params,
+    children,
+    ...props
+}: TypedLinkPropsWithChildrenFunction<P>);
 
-        if (match) return true;
+export function Link<P extends AppRoutesPath>(props: TypedLinkProps<P>) {
+    const { to, params, children, ...restProps } = props;
 
-        return false;
-    };
+    const isActive = getIsActive(props);
 
-    const isActive = getActive();
+    if (isFunction(children)) {
+        return (
+            <ReactRouterLink to={createRoute(to, params)} {...restProps}>
+                {children(isActive)}
+            </ReactRouterLink>
+        );
+    }
 
     return (
-        <ReactRouterLink to={createRoute(to, params)} {...props}>
-            {children(isActive)}
+        <ReactRouterLink to={createRoute(to, params)} {...restProps}>
+            {children}
         </ReactRouterLink>
     );
-};
+}
+
+function getIsActive<P extends AppRoutesPath>(props: TypedLinkProps<P>) {
+    const location = useLocation();
+
+    const match = matchPath(createRoute(props.to, props.params), {
+        path: location.pathname,
+        exact: props.exact,
+    });
+
+    if (match) return true;
+
+    return false;
+}
