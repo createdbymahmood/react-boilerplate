@@ -1,7 +1,13 @@
-import { NavLink as ReactRouterLink, NavLinkProps } from 'react-router-dom';
+import {
+    NavLink as ReactRouterLink,
+    NavLinkProps,
+    matchPath,
+} from 'react-router-dom';
 import { ExtractRouteParams } from 'react-router';
 import { createRoute } from 'helpers/ts/createRoute';
 import { ROUTE_URLS } from 'constants/routeUrls';
+import { ReactNode } from 'react';
+import { useLocation } from 'react-use';
 
 type ExtractStringPropertyNames<T> = {
     [K in keyof T]: T[K] extends string ? K : never;
@@ -19,7 +25,9 @@ export type PathParams = ExtractRouteParams<PATHS>;
 type TypedLinkProps<P extends AppRoutesPath> = {
     to: P;
     params?: PathParams;
-} & NavLinkProps;
+} & Omit<NavLinkProps, 'children'> & {
+        children: (isActive: boolean) => ReactNode;
+    };
 
 /**
  * Type-safe version of `react-router-dom/Link`.
@@ -27,7 +35,27 @@ type TypedLinkProps<P extends AppRoutesPath> = {
 export const Link = <P extends AppRoutesPath>({
     to,
     params,
+    children,
     ...props
 }: TypedLinkProps<P>) => {
-    return <ReactRouterLink to={createRoute(to, params)} {...props} />;
+    const location = useLocation();
+
+    const getActive = () => {
+        const match = matchPath(createRoute(to, params), {
+            path: location.pathname,
+            exact: props.exact,
+        });
+
+        if (match) return true;
+
+        return false;
+    };
+
+    const isActive = getActive();
+
+    return (
+        <ReactRouterLink to={createRoute(to, params)} {...props}>
+            {children(isActive)}
+        </ReactRouterLink>
+    );
 };
