@@ -31,7 +31,7 @@ type TypedLinkProps<P extends AppRoutesPath> = {
 type TypedLinkPropsWithChildrenFunction<P extends AppRoutesPath> = {
     to: P;
     params?: PathParams;
-    children: (isActive: boolean) => ReactNode;
+    children: ({ isActive }: { isActive: boolean }) => ReactNode;
 } & Omit<NavLinkProps, 'children'>;
 
 export function Link<P extends AppRoutesPath>({
@@ -56,7 +56,7 @@ export function Link<P extends AppRoutesPath>(props: TypedLinkProps<P>) {
     if (isFunction(children)) {
         return (
             <ReactRouterLink to={createRoute(to, params)} {...restProps}>
-                {children(isActive)}
+                {children({ isActive })}
             </ReactRouterLink>
         );
     }
