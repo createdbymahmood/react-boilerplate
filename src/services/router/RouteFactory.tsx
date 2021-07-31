@@ -46,19 +46,13 @@ const renderRoutes = map<Route, JSX.Element>(route => {
         key,
     };
 
+    const component = renderComponent(Component, children, exact, path);
+
     if (config.private) {
-        return (
-            <PrivateRoute {...routeProps}>
-                {renderComponent(Component, children, exact, path)}
-            </PrivateRoute>
-        );
+        return <PrivateRoute {...routeProps}>{component}</PrivateRoute>;
     }
 
-    return (
-        <ReactRouterRoute {...routeProps}>
-            {renderComponent(Component, children, exact, path)}
-        </ReactRouterRoute>
-    );
+    return <ReactRouterRoute {...routeProps}>{component}</ReactRouterRoute>;
 });
 
 const validateChildrenRoutesPath = (path: string) => (children: Route[]) => {
