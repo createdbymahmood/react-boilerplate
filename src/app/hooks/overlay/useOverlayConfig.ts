@@ -23,5 +23,5 @@ export function useOverlayConfig({ onCloseRedirectTo, timeout }: Props) {
         setTimeout(() => history.push(createRoute(onCloseRedirectTo)), timeout);
     };
 
-    return [open, handleClose];
+    return [open, handleClose] as const;
 }
