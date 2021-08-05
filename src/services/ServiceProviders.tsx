@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 
 /* Components */
 import { ErrorBoundary } from '@components';
@@ -10,10 +10,9 @@ import { RouterService } from 'services/router/RouterService';
 
 /* Initialize languages */
 import 'services/i18n/i18n';
+import 'assets/styles/tw.css';
 
-type ServiceProvidersProps = {
-    children: ReactNode;
-};
+type ServiceProvidersProps = PropsWithChildren<{}>;
 
 export default function ServiceProviders({ children }: ServiceProvidersProps) {
     return (
