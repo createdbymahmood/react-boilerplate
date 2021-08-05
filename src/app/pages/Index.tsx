@@ -19,7 +19,6 @@ export default function Index(props: PropsWithChildren<unknown>) {
                     <Sidebar />
                     <main className='lg:col-span-9 xl:col-span-6'>
                         <Tabs />
-                        {/* <QuestionsList /> */}
                         {props.children}
                     </main>
 

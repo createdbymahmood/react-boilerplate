@@ -1,10 +1,18 @@
+import { AppRoutesPath, Link } from '@components';
 import clsx from 'clsx';
-import React from 'react';
 
 const tabs = [
-    { name: 'Recent', href: '#', current: true },
-    { name: 'Most Liked', href: '#', current: false },
-    { name: 'Most Answers', href: '#', current: false },
+    { name: 'Recent', href: 'RecentPosts' as AppRoutesPath, current: true },
+    {
+        name: 'Most Liked',
+        href: 'MostLikedPosts' as AppRoutesPath,
+        current: false,
+    },
+    {
+        name: 'Most Answers',
+        href: 'MostAnswers' as AppRoutesPath,
+        current: false,
+    },
 ];
 
 export function Tabs() {
@@ -30,14 +38,13 @@ export function Tabs() {
                     aria-label='Tabs'
                 >
                     {tabs.map((tab, tabIdx) => (
-                        <a
+                        <Link
                             key={tab.name}
-                            href={tab.href}
-                            aria-current={tab.current ? 'page' : undefined}
+                            to={tab.href}
+                            exact
+                            activeClassName='text-gray-900'
                             className={clsx(
-                                tab.current
-                                    ? 'text-gray-900'
-                                    : 'text-gray-500 hover:text-gray-700',
+                                'text-gray-500 hover:text-gray-700',
                                 tabIdx === 0 ? 'rounded-l-lg' : '',
                                 tabIdx === tabs.length - 1
                                     ? 'rounded-r-lg'
@@ -45,17 +52,23 @@ export function Tabs() {
                                 'group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-gray-50 focus:z-10',
                             )}
                         >
-                            <span>{tab.name}</span>
-                            <span
-                                aria-hidden='true'
-                                className={clsx(
-                                    tab.current
-                                        ? 'bg-rose-500'
-                                        : 'bg-transparent',
-                                    'absolute inset-x-0 bottom-0 h-0.5',
-                                )}
-                            />
-                        </a>
+                            {isActive => {
+                                return (
+                                    <>
+                                        <span>{tab.name}</span>
+                                        <span
+                                            aria-hidden='true'
+                                            className={clsx(
+                                                isActive
+                                                    ? 'bg-rose-500'
+                                                    : 'bg-transparent',
+                                                'absolute inset-x-0 bottom-0 h-0.5',
+                                            )}
+                                        />
+                                    </>
+                                );
+                            }}
+                        </Link>
                     ))}
                 </nav>
             </div>
