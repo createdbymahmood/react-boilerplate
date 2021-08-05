@@ -1,5 +1,5 @@
-import { Box, Link } from '@components';
+import React from 'react';
 
 export default function Index() {
-    return <Link to='Index'>Salam</Link>;
+    return <div></div>;
 }
