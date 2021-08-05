@@ -11,6 +11,7 @@ import {
     UserGroupIcon,
     XIcon,
 } from '@heroicons/react/outline';
+import { AppRoutesPath, Link } from '@components/common';
 
 const userNavigation = [
     { name: 'Your Profile', href: '#' },
@@ -26,6 +27,12 @@ const user = {
 };
 
 const navigation = [
+    {
+        name: 'New Post',
+        href: 'CreatePost' as AppRoutesPath,
+        icon: TrendingUpIcon,
+        current: false,
+    },
     { name: 'Home', href: '#', icon: HomeIcon, current: true },
     { name: 'Popular', href: '#', icon: FireIcon, current: false },
     { name: 'Communities', href: '#', icon: UserGroupIcon, current: false },
@@ -188,12 +195,12 @@ export function Topbar() {
                                     )}
                                 </Menu>
 
-                                <a
-                                    href='#'
+                                <Link
+                                    to='CreatePost'
                                     className='ml-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-rose-600 hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500'
                                 >
                                     New Post
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -205,9 +212,9 @@ export function Topbar() {
                     >
                         <div className='max-w-3xl mx-auto px-2 pt-2 pb-3 space-y-1 sm:px-4'>
                             {navigation.map(item => (
-                                <a
+                                <Link
                                     key={item.name}
-                                    href={item.href}
+                                    to={item.href as AppRoutesPath}
                                     aria-current={
                                         item.current ? 'page' : undefined
                                     }
@@ -219,7 +226,7 @@ export function Topbar() {
                                     )}
                                 >
                                     {item.name}
-                                </a>
+                                </Link>
                             ))}
                         </div>
                         <div className='border-t border-gray-200 pt-4 pb-3'>
@@ -254,13 +261,13 @@ export function Topbar() {
                             </div>
                             <div className='mt-3 max-w-3xl mx-auto px-2 space-y-1 sm:px-4'>
                                 {userNavigation.map(item => (
-                                    <a
+                                    <Link
                                         key={item.name}
-                                        href={item.href}
+                                        to={item.href as AppRoutesPath}
                                         className='block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900'
                                     >
                                         {item.name}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </div>

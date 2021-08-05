@@ -3,7 +3,7 @@ import { lazyLoad } from 'helpers/react/loadable';
 import { Route } from 'services/router/RouteFactory';
 
 /* pages */
-import { QuestionsList } from '@components';
+import { QuestionsList, CreatePostModal } from '@components';
 
 const Index = lazyLoad(
     () => import('@pages/Index' /* webpackChunkName: "Index" */),
@@ -42,10 +42,18 @@ export const ROUTES_ARRAY: Route[] = [
                     private: false,
                 },
             },
+            {
+                path: ROUTE_URLS.CreatePost,
+                component: CreatePostModal,
+                exact: true,
+                config: {
+                    private: false,
+                },
+            },
         ],
     },
     {
-        path: '*',
+        path: ROUTE_URLS.Index,
         to: ROUTE_URLS.RecentPosts,
         config: {
             private: false,

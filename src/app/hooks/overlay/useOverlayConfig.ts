@@ -5,11 +5,10 @@ import { useHistory } from 'react-router-dom';
 import { useEffectOnce } from 'react-use';
 
 type Props = {
-    onCloseRedirectTo: AppRoutesPath;
     timeout: number;
 };
 
-export function useOverlayConfig({ onCloseRedirectTo, timeout }: Props) {
+export function useOverlayConfig({ timeout }: Props) {
     const history = useHistory();
     const [open, setOpen] = useState(false);
 
@@ -20,7 +19,8 @@ export function useOverlayConfig({ onCloseRedirectTo, timeout }: Props) {
 
     const handleClose = () => {
         setOpen(false);
-        setTimeout(() => history.push(createRoute(onCloseRedirectTo)), timeout);
+
+        setTimeout(() => history.goBack(), timeout);
     };
 
     return [open, handleClose] as const;

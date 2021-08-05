@@ -1,5 +1,7 @@
 import { AppRoutesPath, Link } from '@components';
 import clsx from 'clsx';
+import { createRoute } from 'helpers/ts/createRoute';
+import { useHistory } from 'react-router-dom';
 
 const tabs = [
     { name: 'Recent', href: 'RecentPosts' as AppRoutesPath, current: true },
@@ -16,6 +18,7 @@ const tabs = [
 ];
 
 export function Tabs() {
+    const history = useHistory();
     return (
         <div className='px-4 sm:px-0'>
             <div className='sm:hidden'>
@@ -26,9 +29,16 @@ export function Tabs() {
                     id='question-tabs'
                     className='block w-full rounded-md border-gray-300 text-base font-medium text-gray-900 shadow-sm focus:border-rose-500 focus:ring-rose-500'
                     defaultValue={tabs?.find(tab => tab.current)?.name}
+                    onChange={e =>
+                        history.push(
+                            createRoute(e.target.value as AppRoutesPath),
+                        )
+                    }
                 >
                     {tabs.map(tab => (
-                        <option key={tab.name}>{tab.name}</option>
+                        <option key={tab.name} value={tab.href}>
+                            {tab.name}
+                        </option>
                     ))}
                 </select>
             </div>
