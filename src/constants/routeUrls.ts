@@ -1,7 +1,12 @@
 export const ROUTE_URLS = {
     Index: '/home',
-    RecentPosts: '/home/posts/recent',
-    MostLikedPosts: '/home/posts/most-liked',
-    MostAnswers: '/home/posts/most-answers',
-    CreatePost: '/home/posts/create',
+    Posts: '/posts',
+    RecentPosts: '/posts',
+    MostLikedPosts: '/posts/most-liked',
+    MostAnswers: '/posts/most-answers',
+    CreatePost: '/posts/create',
+    OfflineUsers: '/posts/create/users/offline',
+    AllUsers: '/posts/create/users/all',
+    OnlineUsers: '/posts/create/users/online',
+    Profile: '/user/profile',
 } as const;

@@ -15,6 +15,7 @@ import {
 } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import { QuestionType } from '@components/lists';
+import { Link } from '@components/common';
 
 type Props = QuestionType;
 
@@ -36,12 +37,9 @@ export function QuestionCard(question: Props) {
                         </div>
                         <div className='min-w-0 flex-1'>
                             <p className='text-sm font-medium text-gray-900'>
-                                <a
-                                    href={question.author.href}
-                                    className='hover:underline'
-                                >
+                                <Link to='Profile' className='hover:underline'>
                                     {question.author.name}
-                                </a>
+                                </Link>
                             </p>
                             <p className='text-sm text-gray-500'>
                                 <a
