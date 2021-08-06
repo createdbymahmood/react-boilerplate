@@ -10,5 +10,6 @@ const xhrService = axios.create({
 
 compose(applyAuthInterceptor, applyErrorInterceptor)(xhrService);
 
+export const generateCancelToken = () => axios.CancelToken.source();
 export * from 'axios';
 export default xhrService;
