@@ -1,10 +1,9 @@
 /* constants */
 import API_URLS from 'constants/apiUrls';
 /* modules */
-import { UseQueryResult, useQuery } from 'react-query';
+import { useQuery, UseQueryOptions } from 'react-query';
 /* services */
 import xhrService, { AxiosError } from 'services/xhr';
-import { queryClient } from 'services/ReactQuery';
 /* types */
 import * as User from '@entities/user';
 import * as Server from '@entities/server';
@@ -12,14 +11,19 @@ import * as Server from '@entities/server';
 type TData = User.Model;
 type TError = AxiosError<Server.Error>;
 
-async function fn(): Promise<TData> {
-    return (await xhrService.get<TData>(API_URLS.login)).data;
+async function fn() {
+    return (await xhrService.get(API_URLS.login)).data;
 }
 
-export function useData(): UseQueryResult<TData, TError> {
+type Props = {
+    options: UseQueryOptions<TData, TError, TData>;
+};
+
+export function useData({ options }: Props) {
     return useQuery(API_URLS.login, fn, {
         onError,
         onSuccess,
+        ...options,
     });
 }
 
@@ -27,5 +31,4 @@ function onError(e: TError) {}
 
 function onSuccess(d: TData) {
     /* revalidate data */
-    queryClient.invalidateQueries('');
 }

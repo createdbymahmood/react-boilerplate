@@ -1,7 +1,7 @@
 /* constants */
 import API_URLS from 'constants/apiUrls';
 /* modules */
-import { useMutation, UseMutationResult } from 'react-query';
+import { useMutation, UseMutationOptions } from 'react-query';
 /* services */
 import xhrService, { AxiosError } from 'services/xhr';
 import { queryClient } from 'services/ReactQuery';
@@ -15,20 +15,20 @@ type TError = AxiosError<Server.Error>;
 type TVariables = User.LoginPayload;
 type TContext = Api.MutationContext;
 
-async function fn(variables: TVariables): Promise<TData> {
-    return (await xhrService.post<TData>(API_URLS.login, variables)).data;
+async function fn(variables: TVariables) {
+    return (await xhrService.post(API_URLS.login, variables)).data;
 }
 
-export function useLogin(): UseMutationResult<
-    TData,
-    TError,
-    TVariables,
-    TContext
-> {
+type Props = {
+    options?: UseMutationOptions<TData, TError, TVariables, TContext>;
+};
+
+export function useLogin({ options }: Props) {
     return useMutation(API_URLS.login, fn, {
         onMutate,
         onError,
         onSuccess,
+        ...options,
     });
 }
 
@@ -42,7 +42,6 @@ function onError(e: TError, v: TVariables, context?: TContext) {
     context?.rollback();
 }
 
-function onSuccess(d: TData, v: TVariables, context?: TContext) {
-    /* revalidate data */
+function onSuccess(data: TData, variables: TVariables, context?: TContext) {
     queryClient.invalidateQueries('');
 }

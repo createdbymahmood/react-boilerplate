@@ -1,7 +1,7 @@
 /* constants */
 import API_URLS from 'constants/apiUrls';
 /* modules */
-import { UseQueryResult, useQuery, QueryObserverOptions } from 'react-query';
+import { useQuery, QueryOptions } from 'react-query';
 /* services */
 import xhrService from 'services/xhr';
 /* types */
@@ -11,13 +11,15 @@ import * as Server from '@entities/server';
 type TData = User.Model;
 type TError = Server.Error;
 
-async function fn(): Promise<TData> {
-    return (await xhrService.get<TData>(API_URLS.currentUser)).data;
+async function fn() {
+    return (await xhrService.get(API_URLS.currentUser)).data;
 }
 
-export function useCurrentUser(
-    options?: QueryObserverOptions<TData, TError>,
-): UseQueryResult<TData, TError> {
+type Props = {
+    options?: QueryOptions<TData, TError>;
+};
+
+export function useCurrentUser({ options }: Props) {
     return useQuery(API_URLS.currentUser, fn, {
         onError,
         onSuccess,
@@ -25,8 +27,6 @@ export function useCurrentUser(
     });
 }
 
-function onError(e: TError) {
-    console.log(e);
-}
+function onError(e: TError) {}
 
 function onSuccess(d: TData) {}
