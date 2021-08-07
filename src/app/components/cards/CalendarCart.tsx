@@ -46,7 +46,7 @@ const applications = [
 
 export function CalendarCard() {
     return (
-        <div className='bg-white shadow overflow-hidden sm:rounded-md'>
+        <div className='bg-white overflow-hidden sm:rounded-md'>
             <ul className='divide-y divide-gray-200'>
                 {applications.map(application => (
                     <li key={application.applicant.email}>

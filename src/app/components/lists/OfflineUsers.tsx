@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { DotsVerticalIcon } from '@heroicons/react/solid';
+import { Link } from '@components/common';
 
 const team = [
     {
@@ -21,7 +22,11 @@ export function OfflineUsers() {
             {team.map(person => (
                 <li key={person.handle}>
                     <div className='relative group py-6 px-5 flex items-center'>
-                        <a href={person.href} className='-m-1 flex-1 block p-1'>
+                        <Link
+                            href={person.href}
+                            className='-m-1 flex-1 block p-1'
+                            to='Profile'
+                        >
                             <div
                                 className='absolute inset-0 group-hover:bg-gray-50'
                                 aria-hidden='true'
@@ -52,7 +57,7 @@ export function OfflineUsers() {
                                     </p>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                         <Menu
                             as='div'
                             className='ml-2 flex-shrink-0 relative inline-block text-left'
