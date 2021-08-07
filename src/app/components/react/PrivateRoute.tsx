@@ -1,4 +1,4 @@
-import { ComponentType } from 'react';
+import { ComponentType, Fragment } from 'react';
 /* Components */
 import { Route, RouteProps } from 'react-router-dom';
 /* Modules */
@@ -17,11 +17,11 @@ export function PrivateRoute({
     component: Component,
     ...rest
 }: Props): JSX.Element {
-    if (!Component) return <></>;
-
     const { data, isLoading, isError } = useCurrentUser({
-        retry: false,
-        staleTime: 10 * 60 * 1000, // 10 mins
+        options: {
+            retry: false,
+            staleTime: 10 * 60 * 1000, // 10 mins
+        },
     });
 
     const UnauthorizedRedirectionConfig: History.LocationDescriptor = {
@@ -30,7 +30,7 @@ export function PrivateRoute({
     };
 
     if (isLoading) {
-        return <div>Loading....</div>;
+        return <div></div>;
     }
 
     if (isError) {
@@ -39,12 +39,9 @@ export function PrivateRoute({
 
     const authState = !isLoading && data;
 
-    const renderComponent = (props: RouteComponentProps) => {
-        if (authState) {
-            return <Component {...props} />;
-        }
+    if (!authState) {
         return <Redirect to={UnauthorizedRedirectionConfig} />;
-    };
+    }
 
-    return <Route {...rest} render={renderComponent} />;
+    return <Route {...rest} />;
 }

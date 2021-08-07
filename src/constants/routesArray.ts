@@ -37,9 +37,9 @@ export const ROUTES_ARRAY: Route[] = [
             {
                 path: ROUTE_URLS.RecentPosts,
                 component: QuestionsList,
-                exact: false,
+                exact: true,
                 config: {
-                    private: false,
+                    private: true,
                 },
             },
             {

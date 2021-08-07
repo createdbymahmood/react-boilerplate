@@ -1,7 +1,7 @@
 /* constants */
 import API_URLS from 'constants/apiUrls';
 /* modules */
-import { useQuery, UseQueryOptions } from 'react-query';
+import { useQuery, QueryObserverOptions } from 'react-query';
 /* services */
 import xhrService, { AxiosError } from 'services/xhr';
 /* types */
@@ -16,7 +16,7 @@ async function fn() {
 }
 
 type Props = {
-    options: UseQueryOptions<TData, TError, TData>;
+    options: QueryObserverOptions<TData, TError, TData>;
 };
 
 export function useData({ options }: Props) {

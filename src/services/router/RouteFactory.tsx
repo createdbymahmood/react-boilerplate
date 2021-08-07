@@ -47,7 +47,6 @@ const renderRoutes = map<Route, JSX.Element>(route => {
     };
 
     const component = renderComponent(Component, children, exact, path);
-
     if (config.private) {
         return <PrivateRoute {...routeProps}>{component}</PrivateRoute>;
     }

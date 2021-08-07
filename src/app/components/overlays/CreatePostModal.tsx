@@ -11,10 +11,6 @@ const tabs = [
     { name: 'Offline', href: 'OfflineUsers' as AppRoutesPath, current: false },
 ];
 
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ');
-}
-
 export function CreatePostModal(props: PropsWithChildren<unknown>) {
     const [open, handleClose] = useOverlayConfig({ timeout: 500 });
 
