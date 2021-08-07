@@ -5,6 +5,9 @@ import { Route } from 'services/router/RouteFactory';
 /* pages */
 import { QuestionsList, CreatePostModal } from '@components';
 import { OfflineUsers } from '@components/lists/OfflineUsers';
+import { ProfileCard } from '@components/cards/ProfileCard';
+import { CalendarCard } from '@components/cards/CalendarCart';
+import { RecognitionList } from '@components/lists/RecognitionList';
 
 const Index = lazyLoad(
     () => import('@pages/Index' /* webpackChunkName: "Index" */),
@@ -104,10 +107,36 @@ export const ROUTES_ARRAY: Route[] = [
     {
         path: ROUTE_URLS.Profile,
         component: Profile,
-        exact: true,
+        exact: false,
         config: {
             private: false,
         },
+        children: [
+            {
+                path: ROUTE_URLS.Profile,
+                component: ProfileCard,
+                exact: true,
+                config: {
+                    private: false,
+                },
+            },
+            {
+                path: ROUTE_URLS.ProfileCalendar,
+                component: CalendarCard,
+                exact: true,
+                config: {
+                    private: false,
+                },
+            },
+            {
+                path: ROUTE_URLS.ProfileRecognitionList,
+                component: RecognitionList,
+                exact: true,
+                config: {
+                    private: false,
+                },
+            },
+        ],
     },
     {
         path: '*',

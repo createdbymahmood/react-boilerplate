@@ -9,4 +9,6 @@ export const ROUTE_URLS = {
     AllUsers: '/posts/create/users/all',
     OnlineUsers: '/posts/create/users/online',
     Profile: '/user/profile',
+    ProfileCalendar: '/user/profile/calendar',
+    ProfileRecognitionList: '/user/profile/recognition',
 } as const;
