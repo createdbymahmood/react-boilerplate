@@ -11,16 +11,24 @@ declare module 'axios' {
     interface AxiosRequestConfig extends AuthRequestConfig {}
 }
 
-export const applyAuthInterceptor = (instance: AxiosInstance) => {
-    return instance.interceptors.request.use((config: AxiosRequestConfig) => {
+export const createAuthInterceptor = (
+    instance: AxiosInstance,
+    onAuthenticate: (config: AxiosRequestConfig) => Promise<AxiosRequestConfig>,
+) => {
+    return instance.interceptors.request.use(config => {
         const { shouldAuthenticate = true } = config;
 
         if (shouldAuthenticate) {
-            // * some logic to read Bearer token from localStorage
-            config.headers.authorization = `Bearer ${localStorage.getItem(
-                'token',
-            )}`;
+            return onAuthenticate(config);
         }
         return config;
     });
 };
+
+export const applyAuthInterceptor = (instance: AxiosInstance) =>
+    createAuthInterceptor(instance, async config => {
+        config.headers.authorization = `Bearer ${localStorage.getItem(
+            'token',
+        )}`;
+        return config;
+    });

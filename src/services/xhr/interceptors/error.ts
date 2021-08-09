@@ -1,17 +1,47 @@
-import { AxiosInstance, AxiosError } from 'axios';
+import {
+    AxiosInstance,
+    AxiosError,
+    AxiosInterceptorManager,
+    AxiosRequestConfig,
+    AxiosResponse,
+} from 'axios';
 import * as IServer from '@entities/server';
 
 export const applyErrorInterceptor = (instance: AxiosInstance) => {
-    instance.interceptors.request.use(undefined, (err: AxiosError) => {
-        throw err;
-    });
+    return createErrorInterceptor(instance);
+};
 
-    instance.interceptors.response.use(
-        undefined,
-        (err: AxiosError<IServer.Error>) => {
-            throw err?.response?.data;
-        },
-    );
+const createErrorInterceptor = (instance: AxiosInstance) => {
+    const { request: req, response: res } = instance.interceptors;
+
+    captureRequestExceptions(req);
+    captureResponseExceptions(res);
 
     return instance;
+};
+
+const captureRequestExceptions = (
+    req: AxiosInterceptorManager<AxiosRequestConfig>,
+) => {
+    req.use(undefined, (err: AxiosError) => {
+        /*  Sentry.captureException(new Error(JSON.stringify(err)), {
+            tags: {
+                section: ERRORS.API_CALLS.REQUEST,
+            },
+        }); */
+        throw err;
+    });
+};
+
+const captureResponseExceptions = (
+    res: AxiosInterceptorManager<AxiosResponse>,
+) => {
+    res.use(undefined, (err: AxiosError<IServer.Error>) => {
+        /*   Sentry.captureException(new Error(JSON.stringify(err)), {
+            tags: {
+                section: ERRORS.API_CALLS.RESPONSE,
+            },
+        }); */
+        throw err?.response?.data;
+    });
 };
