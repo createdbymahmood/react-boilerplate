@@ -1,2 +1,1 @@
-export * from './AppLayout';
-export * from './IndexLayout';
+export {};
