@@ -1,5 +1,10 @@
-import React from 'react';
+import { Box, DocumentTitle } from '@components';
 
 export default function Index() {
-    return <div>Home Page</div>;
+    return (
+        <Box>
+            <DocumentTitle title='Home' />
+            Home Page
+        </Box>
+    );
 }
