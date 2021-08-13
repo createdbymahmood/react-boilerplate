@@ -5,8 +5,8 @@ import { useQuery, QueryObserverOptions } from 'react-query';
 /* services */
 import xhrService, { AxiosError } from 'services/xhr';
 /* types */
-import * as User from '@entities/user';
-import * as Server from '@entities/server';
+import type * as User from '@entities/user';
+import type * as Server from '@entities/server';
 
 type TData = User.Model;
 type TError = AxiosError<Server.Error>;

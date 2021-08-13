@@ -1,9 +1,12 @@
 import { PrivateRoute } from '@components';
-import { Maybe } from '@entities/gobal';
+
+/* Modules */
 import { isEmpty } from 'lodash';
 import { map, uniqueId } from 'lodash/fp';
 import { ComponentType } from 'react';
 import { Switch, Redirect, Route as ReactRouterRoute } from 'react-router-dom';
+/* types */
+import type { Maybe } from '@entities/gobal';
 
 export type Route = {
     path: string;
