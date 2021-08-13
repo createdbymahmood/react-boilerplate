@@ -12,10 +12,10 @@ export const applyErrorInterceptor = (instance: AxiosInstance) => {
 };
 
 const createErrorInterceptor = (instance: AxiosInstance) => {
-    const { request: req, response: res } = instance.interceptors;
+    const { request, response } = instance.interceptors;
 
-    captureRequestExceptions(req);
-    captureResponseExceptions(res);
+    captureRequestExceptions(request);
+    captureResponseExceptions(response);
 
     return instance;
 };
