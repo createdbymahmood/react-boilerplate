@@ -1,5 +1,6 @@
 import { FC } from 'react';
-/* modules */
+
+/* Modules */
 import { QueryClientProvider, QueryClient } from 'react-query';
 
 export const queryClient = new QueryClient({});
