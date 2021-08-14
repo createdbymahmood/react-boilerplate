@@ -1,34 +1,33 @@
-/* constants */
+/* Constants */
 import API_URLS from 'constants/apiUrls';
-/* modules */
+
+/* Modules */
 import { useQuery, QueryObserverOptions } from 'react-query';
-/* services */
+
+/* Services */
 import xhrService, { AxiosError } from 'services/xhr';
-/* types */
+
+/* Types */
 import type * as User from '@entities/user';
 import type * as Server from '@entities/server';
 
-type TData = User.Model;
-type TError = AxiosError<Server.Error>;
-
 async function fn() {
-    return (await xhrService.get(API_URLS.login)).data;
+    const { data } = await xhrService.get(API_URLS.login);
+    return data;
 }
 
 type Props = {
-    options: QueryObserverOptions<TData, TError, TData>;
+    options: QueryObserverOptions<
+        User.Model,
+        AxiosError<Server.Error>,
+        User.Model
+    >;
 };
 
 export function useData({ options }: Props) {
-    return useQuery(API_URLS.login, fn, {
-        onError,
-        onSuccess,
+    return useQuery({
+        queryKey: API_URLS.login,
+        queryFn: fn,
         ...options,
     });
-}
-
-function onError(e: TError) {}
-
-function onSuccess(d: TData) {
-    /* revalidate data */
 }
