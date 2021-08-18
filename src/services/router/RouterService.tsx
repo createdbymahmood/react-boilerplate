@@ -1,6 +1,6 @@
-import { PropsWithChildren } from 'react';
+import { FC } from 'react';
 import { BrowserRouter, BrowserRouterProps } from 'react-router-dom';
 
-export function RouterService(props: PropsWithChildren<BrowserRouterProps>) {
-    return <BrowserRouter {...props} />;
-}
+export const RouterService: FC<BrowserRouterProps> = props => (
+    <BrowserRouter {...props} />
+);

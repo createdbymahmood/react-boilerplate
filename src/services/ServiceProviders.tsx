@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 
 /* Components */
 import { ErrorBoundary } from '@components';
@@ -14,7 +14,7 @@ import 'assets/styles/tw.css';
 
 type ServiceProvidersProps = PropsWithChildren<{}>;
 
-export default function ServiceProviders({ children }: ServiceProvidersProps) {
+const ServiceProviders: FC = ({ children }: ServiceProvidersProps) => {
     return (
         <React.StrictMode>
             <ErrorBoundary>
@@ -26,4 +26,6 @@ export default function ServiceProviders({ children }: ServiceProvidersProps) {
             </ErrorBoundary>
         </React.StrictMode>
     );
-}
+};
+
+export default ServiceProviders;
