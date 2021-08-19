@@ -8,6 +8,7 @@
             "@pages/*": ["app/pages/*"],
             "@hooks/*": ["app/hooks/*"],
             "@store/*": ["app/store/*"],
+            "@graphql": ["app/graphql/index.tsx"],
             "@app/*": ["app/*"]
         }
     }

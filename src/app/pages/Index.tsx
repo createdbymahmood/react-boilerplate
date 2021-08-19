@@ -5,7 +5,6 @@ const Index: FC = () => {
     return (
         <Box>
             <DocumentTitle title='Home' />
-            Home Page
         </Box>
     );
 };

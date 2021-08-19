@@ -11,6 +11,7 @@ import { RouterService } from 'services/router/RouterService';
 /* Initialize languages */
 import 'services/i18n/i18n';
 import 'assets/styles/tw.css';
+import { GraphqlService } from './graphql/GraphqlService';
 
 type ServiceProvidersProps = PropsWithChildren<{}>;
 
@@ -20,7 +21,9 @@ const ServiceProviders: FC = ({ children }: ServiceProvidersProps) => {
             <ErrorBoundary>
                 <HelmetService>
                     <ReactQueryService>
-                        <RouterService>{children}</RouterService>
+                        <GraphqlService>
+                            <RouterService>{children}</RouterService>
+                        </GraphqlService>
                     </ReactQueryService>
                 </HelmetService>
             </ErrorBoundary>
