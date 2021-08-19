@@ -1,16 +1,5 @@
 import { useEffect, useState } from 'react';
-
-export const getId = () => {
-    return Math.random().toString(32).slice(2, 10);
-};
-
-const isBrowser = (): boolean => {
-    return Boolean(
-        typeof window !== 'undefined' &&
-            window.document &&
-            window.document.createElement,
-    );
-};
+import { isBrowser, getId, createElement } from 'helpers/ts';
 
 export type SSRState = {
     isBrowser: boolean;
@@ -27,12 +16,6 @@ const useSSR = (): SSRState => {
         isBrowser: browser,
         isServer: !browser,
     };
-};
-
-const createElement = (id: string): HTMLElement => {
-    const el = document.createElement('div');
-    el.setAttribute('id', id);
-    return el;
 };
 
 const usePortal = (
