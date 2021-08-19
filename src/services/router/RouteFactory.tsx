@@ -71,8 +71,6 @@ const renderChildren = (
 
     /* Makes sure that all children path names are started with parent path name */
     if (validateChildrenRoutesPath(path)(children)) {
-        console.log({ children, path });
-
         throw new Error(
             `Children path must be started with parent path! [${path}]`,
         );
