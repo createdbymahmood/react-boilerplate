@@ -18,15 +18,16 @@ type TVariables = User.LoginPayload;
 type TContext = Api.MutationContext;
 
 async function fn(variables: TVariables) {
-    return (await xhrService.post(API_URLS.login, variables)).data;
+    const { data } = await xhrService.post(API_URLS.login, variables);
+    return data;
 }
 
 type Props = {
     options?: UseMutationOptions<TData, TError, TVariables, TContext>;
 };
 
-export function useLogin({ options }: Props) {
-    return useMutation({
+export const useLogin = ({ options }: Props) =>
+    useMutation({
         mutationKey: API_URLS.login,
         mutationFn: fn,
         onError,
@@ -34,7 +35,6 @@ export function useLogin({ options }: Props) {
         onSuccess,
         ...options,
     });
-}
 
 function onMutate(v: TVariables): TContext {
     return {

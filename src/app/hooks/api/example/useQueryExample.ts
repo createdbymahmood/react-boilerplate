@@ -24,10 +24,5 @@ type Props = {
     >;
 };
 
-export function useData({ options }: Props) {
-    return useQuery({
-        queryKey: API_URLS.login,
-        queryFn: fn,
-        ...options,
-    });
-}
+export const useData = ({ options }: Props) =>
+    useQuery(API_URLS.login, fn, options);

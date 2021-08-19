@@ -19,13 +19,12 @@ type Props = {
     options?: QueryObserverOptions<TData, TError>;
 };
 
-export function useCurrentUser({ options }: Props) {
-    return useQuery(API_URLS.currentUser, fn, {
+export const useCurrentUser = ({ options }: Props) =>
+    useQuery(API_URLS.currentUser, fn, {
         onError,
         onSuccess,
         ...options,
     });
-}
 
 function onError(e: TError) {}
 
