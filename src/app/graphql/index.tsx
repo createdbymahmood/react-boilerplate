@@ -119,6 +119,14 @@ export type StringQueryOperatorInput = {
     glob: Maybe<Scalars['String']>;
 };
 
+export type _Country_Fragment_ = {
+    __typename?: 'Country';
+    code: string;
+    name: string;
+    native: string;
+    phone: string;
+};
+
 export type CountriesVariables = Exact<{ [key: string]: never }>;
 
 export type Countries = {
@@ -132,15 +140,47 @@ export type Countries = {
     }>;
 };
 
+export type _Language_Fragment_ = {
+    __typename?: 'Language';
+    code: string;
+    name: Maybe<string>;
+    native: Maybe<string>;
+};
+
+export type LanguagesVariables = Exact<{ [key: string]: never }>;
+
+export type Languages = {
+    __typename?: 'Query';
+    languages: Array<{
+        __typename?: 'Language';
+        code: string;
+        name: Maybe<string>;
+        native: Maybe<string>;
+    }>;
+};
+
+export const _Country_Fragment_ = gql`
+    fragment _COUNTRY_FRAGMENT_ on Country {
+        code
+        name
+        native
+        phone
+    }
+`;
+export const _Language_Fragment_ = gql`
+    fragment _LANGUAGE_FRAGMENT_ on Language {
+        code
+        name
+        native
+    }
+`;
 export const CountriesDocument = gql`
     query countries {
         countries {
-            code
-            name
-            native
-            phone
+            ..._COUNTRY_FRAGMENT_
         }
     }
+    ${_Country_Fragment_}
 `;
 
 /**
@@ -183,4 +223,54 @@ export type CountriesLazyQueryHookResult = ReturnType<
 export type CountriesQueryResult = Apollo.QueryResult<
     Countries,
     CountriesVariables
+>;
+export const LanguagesDocument = gql`
+    query languages {
+        languages {
+            ..._LANGUAGE_FRAGMENT_
+        }
+    }
+    ${_Language_Fragment_}
+`;
+
+/**
+ * __useLanguages__
+ *
+ * To run a query within a React component, call `useLanguages` and pass it any options that fit your needs.
+ * When your component renders, `useLanguages` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLanguages({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLanguages(
+    baseOptions?: Apollo.QueryHookOptions<Languages, LanguagesVariables>,
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery<Languages, LanguagesVariables>(
+        LanguagesDocument,
+        options,
+    );
+}
+export function useLanguagesLazyQuery(
+    baseOptions?: Apollo.LazyQueryHookOptions<Languages, LanguagesVariables>,
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery<Languages, LanguagesVariables>(
+        LanguagesDocument,
+        options,
+    );
+}
+export type LanguagesHookResult = ReturnType<typeof useLanguages>;
+export type LanguagesLazyQueryHookResult = ReturnType<
+    typeof useLanguagesLazyQuery
+>;
+export type LanguagesQueryResult = Apollo.QueryResult<
+    Languages,
+    LanguagesVariables
 >;
