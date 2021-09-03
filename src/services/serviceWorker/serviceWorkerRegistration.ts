@@ -26,7 +26,7 @@ type Config = {
 };
 
 export function register(config?: Config) {
-    if ('serviceWorker' in navigator) {
+    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
         // The URL constructor is available in all browsers that support SW.
         const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
         if (publicUrl.origin !== window.location.origin) {
@@ -107,7 +107,10 @@ function registerValidSW(swUrl: string, config?: Config) {
 function checkValidServiceWorker(swUrl: string, config?: Config) {
     // Check if the service worker can be found. If it can't reload the page.
     fetch(swUrl, {
-        headers: { 'Service-Worker': 'script' },
+        headers: {
+            'Service-Worker': 'script',
+            'content-type': 'application/json',
+        },
     })
         .then(response => {
             // Ensure service worker exists, and that we really are getting a JS file.
