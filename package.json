@@ -52,7 +52,7 @@
         "start": "craco start",
         "build": "craco build",
         "test": "craco test",
-        "eject": "craco eject",
+        "eject": "react-scripts eject",
         "prettify": "prettier --write .",
         "codegen": "graphql-codegen --config graphql-codegen.yml --watch"
     },
