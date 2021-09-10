@@ -4,12 +4,13 @@ import { PrivateRoute } from '@components';
 import { isEmpty } from 'lodash';
 import { map, uniqueId } from 'lodash/fp';
 import { ComponentType } from 'react';
-import { Switch, Redirect, Route as ReactRouterRoute } from 'react-router-dom';
+import { Redirect, Route as ReactRouterRoute, Switch } from 'react-router-dom';
+
 /* types */
 import type { Maybe } from '@entities/gobal';
 
 export type Route = {
-    path: string;
+    path: string | string[];
     component?: ComponentType<any>;
     to?: string;
     exact?: boolean;
@@ -40,7 +41,7 @@ const renderRoutes = map<Route, JSX.Element>(route => {
     const key = uniqueId(`route-${path}`);
 
     if (to || !Component) {
-        return <Redirect key={key} from={path} to={to as string} />;
+        return <Redirect key={key} from={path as string} to={to as string} />;
     }
 
     const routeProps = {
@@ -49,7 +50,12 @@ const renderRoutes = map<Route, JSX.Element>(route => {
         key,
     };
 
-    const component = renderComponent(Component, children, exact, path);
+    const component = renderComponent(
+        Component,
+        children,
+        exact,
+        path as string,
+    );
     if (config.private) {
         return <PrivateRoute {...routeProps}>{component}</PrivateRoute>;
     }
@@ -58,7 +64,16 @@ const renderRoutes = map<Route, JSX.Element>(route => {
 });
 
 const validateChildrenRoutesPath = (path: string) => (children: Route[]) => {
-    return !children.some(child => child.path.startsWith(`${path}`));
+    return !children.some(child => {
+        /*
+        
+        */
+        if (Array.isArray(child.path)) {
+            return child.path.map(p => p.startsWith(`${path}`));
+        }
+
+        return child.path.startsWith(`${path}`);
+    });
 };
 
 const renderChildren = (
