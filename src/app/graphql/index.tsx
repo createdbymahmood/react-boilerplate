@@ -121,7 +121,7 @@ export type StringQueryOperatorInput = {
     regex: Maybe<Scalars['String']>;
 };
 
-export type _Country_Fragment_ = {
+export type Country_Fragment = {
     __typename?: 'Country';
     code: string;
     name: string;
@@ -142,8 +142,8 @@ export type Countries = {
     }>;
 };
 
-export const _Country_Fragment_ = gql`
-    fragment _COUNTRY_FRAGMENT_ on Country {
+export const Country_Fragment = gql`
+    fragment COUNTRY_FRAGMENT on Country {
         code
         name
         native
@@ -153,10 +153,10 @@ export const _Country_Fragment_ = gql`
 export const CountriesDocument = gql`
     query countries {
         countries {
-            ..._COUNTRY_FRAGMENT_
+            ...COUNTRY_FRAGMENT
         }
     }
-    ${_Country_Fragment_}
+    ${Country_Fragment}
 `;
 
 /**
