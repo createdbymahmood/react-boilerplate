@@ -11,14 +11,11 @@ export function useOverlayConfig({ timeout }: Props) {
     const [open, setOpen] = useState(false);
 
     /* Open modal on first mount */
-    useEffectOnce(() => {
-        setOpen(true);
-    });
+    useEffectOnce(() => setOpen(true));
 
     const handleClose = () => {
         setOpen(false);
-
-        setTimeout(() => history.goBack(), timeout);
+        setTimeout(history.goBack, timeout);
     };
 
     return [open, handleClose] as const;

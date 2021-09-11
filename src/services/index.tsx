@@ -4,18 +4,18 @@ import React, { FC, PropsWithChildren } from 'react';
 import { ErrorBoundary } from '@components';
 
 /* Services */
-import { ReactQueryService } from 'services/ReactQuery';
-import { HelmetService } from 'services/Helmet';
+import { ReactQueryService } from 'services/reactQuery';
+import { HelmetService } from 'services/helmet';
 import { RouterService } from 'services/router/RouterService';
+import { GraphqlService } from 'services/graphql';
 
 /* Initialize languages */
 import 'services/i18n/i18n';
 import 'assets/styles/tw.css';
-import { GraphqlService } from './graphql/GraphqlService';
 
 type ServiceProvidersProps = PropsWithChildren<{}>;
 
-const ServiceProviders: FC = ({ children }: ServiceProvidersProps) => {
+const AppProviders: FC = ({ children }: ServiceProvidersProps) => {
     return (
         <React.StrictMode>
             <ErrorBoundary>
@@ -31,4 +31,4 @@ const ServiceProviders: FC = ({ children }: ServiceProvidersProps) => {
     );
 };
 
-export default ServiceProviders;
+export default AppProviders;
