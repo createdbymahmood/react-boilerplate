@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC } from 'react';
 
 /* Components */
 import { ErrorBoundary } from '@components';
@@ -13,9 +13,7 @@ import { GraphqlService } from 'services/graphql';
 import 'services/i18n/i18n';
 import 'assets/styles/tw.css';
 
-type ServiceProvidersProps = PropsWithChildren<{}>;
-
-const AppProviders: FC = ({ children }: ServiceProvidersProps) => {
+const AppProviders: FC = ({ children }) => {
     return (
         <React.StrictMode>
             <ErrorBoundary>
