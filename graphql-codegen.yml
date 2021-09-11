@@ -1,6 +1,6 @@
 overwrite: true
 schema: 'https://countries.trevorblades.com'
-documents: 'src/app/graphql/**/*.gql.ts'
+documents: 'src/app/graphql/**/*.gql'
 generates:
     src/app/graphql/index.tsx:
         plugins:

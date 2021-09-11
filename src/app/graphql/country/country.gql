@@ -1,0 +1,12 @@
+fragment COUNTRY_FRAGMENT on Country {
+    code
+    name
+    native
+    phone
+}
+
+query countries {
+    countries {
+        ...COUNTRY_FRAGMENT
+    }
+}
