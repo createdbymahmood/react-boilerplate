@@ -1,3 +1,6 @@
+import { LoginForm } from '@components';
+import { LoginFormPreview } from '@components/auth/LoginForm/LoginFormPreview';
+import { LoginFormView } from '@components/auth/LoginForm/LoginFormView';
 import { ROUTE_URLS } from 'constants/routeUrls';
 import { lazyLoad } from 'helpers/react/loadable';
 import { Route } from 'services/router/RouteFactory';
@@ -5,6 +8,9 @@ import { Route } from 'services/router/RouteFactory';
 /* pages */
 const Index = lazyLoad(
     () => import('@pages/Index' /* webpackChunkName: "Index" */),
+);
+const Login = lazyLoad(
+    () => import('@pages/auth/Login' /* webpackChunkName: "Login" */),
 );
 
 export const ROUTES_ARRAY: Route[] = [
@@ -15,6 +21,33 @@ export const ROUTES_ARRAY: Route[] = [
         config: {
             private: false,
         },
+    },
+    {
+        path: ROUTE_URLS.Login,
+        component: Login,
+        exact: false,
+        config: {
+            private: false,
+        },
+        children: [
+            {
+                path: ROUTE_URLS.Login,
+                component: LoginFormView,
+                exact: true,
+                config: {
+                    private: false,
+                },
+            },
+
+            {
+                path: ROUTE_URLS.LoginPreview,
+                component: LoginFormPreview,
+                exact: true,
+                config: {
+                    private: false,
+                },
+            },
+        ],
     },
 
     {

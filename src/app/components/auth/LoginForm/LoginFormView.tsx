@@ -1,5 +1,9 @@
+import { createRoute } from 'helpers/ts';
+import { useStateMachine } from 'little-state-machine';
 import { FC, useMemo } from 'react';
 import { useFormContext, useFieldArray } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import { updateAction } from './LoginForm';
 import type { LoginFormViewProps } from './LoginForm.d';
 
 const lengthIsMinimumOf = (items: any[], length: number): boolean => {
@@ -7,7 +11,9 @@ const lengthIsMinimumOf = (items: any[], length: number): boolean => {
 };
 
 export const LoginFormView: FC<LoginFormViewProps> = () => {
+    const history = useHistory();
     const { handleSubmit, register, control } = useFormContext();
+    const { actions } = useStateMachine({ updateAction });
 
     const { fields, append, remove } = useFieldArray({
         control, // control props comes from useForm (optional: if you are using FormContext)
@@ -17,6 +23,8 @@ export const LoginFormView: FC<LoginFormViewProps> = () => {
 
     const onSubmit = data => {
         console.log({ data });
+        actions.updateAction(data);
+        history.push(createRoute('LoginPreview'));
     };
 
     const isDeletable = useMemo(

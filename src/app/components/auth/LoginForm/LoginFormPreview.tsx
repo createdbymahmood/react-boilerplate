@@ -7,7 +7,7 @@ export function LoginFormPreview() {
     return (
         <div>
             preview
-            {/* <pre>{JSON.stringify(fo, null, 2)}</pre> */}
+            <pre>{JSON.stringify(form.watch(), null, 2)}</pre>
         </div>
     );
 }

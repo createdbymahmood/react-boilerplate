@@ -8,6 +8,7 @@ import { ReactQueryService } from 'services/reactQuery';
 import { HelmetService } from 'services/helmet';
 import { RouterService } from 'services/router/RouterService';
 import { GraphqlService } from 'services/graphql';
+import { StateMachineProvider } from 'little-state-machine';
 
 /* Initialize languages */
 import 'services/i18n/i18n';
@@ -20,7 +21,11 @@ const AppProviders: FC = ({ children }) => {
                 <HelmetService>
                     <ReactQueryService>
                         <GraphqlService>
-                            <RouterService>{children}</RouterService>
+                            <RouterService>
+                                <StateMachineProvider>
+                                    {children}
+                                </StateMachineProvider>
+                            </RouterService>
                         </GraphqlService>
                     </ReactQueryService>
                 </HelmetService>

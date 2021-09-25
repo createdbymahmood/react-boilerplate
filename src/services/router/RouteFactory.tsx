@@ -7,7 +7,7 @@ import { ComponentType } from 'react';
 import { Redirect, Route as ReactRouterRoute, Switch } from 'react-router-dom';
 
 /* types */
-import type { Maybe } from '@entities/gobal';
+import type { Maybe } from '@entities/global';
 
 export type Route = {
     path: string | string[];
