@@ -1,3 +1,3 @@
-export type LoginFormViewProps = {
-    onSubmit: (payload: Record<string, unknown>) => void;
-};
+import { FieldValues, UseFormReturn } from 'react-hook-form';
+
+export type LoginFormViewProps = {};
