@@ -13,6 +13,7 @@ import { StateMachineProvider } from 'little-state-machine';
 /* Initialize languages */
 import 'services/i18n/i18n';
 import 'assets/styles/tw.css';
+import AuthProvider from '@store/auth/AuthProvider';
 
 const AppProviders: FC = ({ children }) => {
     return (
@@ -23,7 +24,7 @@ const AppProviders: FC = ({ children }) => {
                         <GraphqlService>
                             <RouterService>
                                 <StateMachineProvider>
-                                    {children}
+                                    <AuthProvider>{children}</AuthProvider>
                                 </StateMachineProvider>
                             </RouterService>
                         </GraphqlService>

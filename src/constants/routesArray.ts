@@ -16,7 +16,7 @@ export const ROUTES_ARRAY: Route[] = [
         component: Index,
         exact: true,
         config: {
-            private: false,
+            private: true,
         },
     },
     {
