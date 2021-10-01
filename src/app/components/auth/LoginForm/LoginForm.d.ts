@@ -1,3 +1,14 @@
-import { FieldValues, UseFormReturn } from 'react-hook-form';
+import {
+    FieldValues,
+    UseFormReturn,
+    UseFormHandleSubmit,
+} from 'react-hook-form';
+import React from 'react';
 
-export type LoginFormViewProps = {};
+type LoginFormFieldValues = {};
+
+export type LoginFormViewProps = {
+    onSubmit: (
+        e?: React.BaseSyntheticEvent<object, any, any> | undefined,
+    ) => Promise<void>;
+};

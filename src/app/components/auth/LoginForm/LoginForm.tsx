@@ -1,25 +1,20 @@
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { createStore, useStateMachine } from 'little-state-machine';
-import { useEffectOnce } from 'react-use';
+import { LoginFormView } from './LoginFormView';
+import { LoginFormFieldValues } from './LoginForm.d';
 
-export function updateAction(state, payload) {
-    return {
-        ...state,
-        ...payload,
-    };
-}
-
-createStore({
-    username: [{ value: 'Salam' }],
-});
-
-export const LoginForm: FC = ({ children }) => {
-    const { state, actions } = useStateMachine({ updateAction });
-
-    const form = useForm({
-        defaultValues: state,
+export const LoginForm: FC = () => {
+    const form = useForm<LoginFormFieldValues>({
+        defaultValues: {},
     });
 
-    return <FormProvider {...form}>{children}</FormProvider>;
+    const onSubmit = form.handleSubmit(data => {
+        console.log(data);
+    });
+
+    return (
+        <FormProvider {...form}>
+            <LoginFormView onSubmit={onSubmit} />
+        </FormProvider>
+    );
 };
