@@ -29,7 +29,7 @@ export const useAuthStore = create<AuthStoreType>(set => ({
     logout: () => {
         return set({
             isAuthenticated: false,
-            isInitialized: false,
+            isInitialized: true,
             user: null,
         });
     },
