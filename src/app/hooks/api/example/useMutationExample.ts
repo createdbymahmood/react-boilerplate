@@ -26,15 +26,7 @@ type Props = {
     options?: UseMutationOptions<TData, TError, TVariables, TContext>;
 };
 
-export const useLogin = ({ options }: Props) =>
-    useMutation({
-        mutationKey: API_URLS.login,
-        mutationFn: fn,
-        onError,
-        onMutate,
-        onSuccess,
-        ...options,
-    });
+export const useLogin = ({ options }: Props) => useMutation(fn);
 
 function onMutate(v: TVariables): TContext {
     return {

@@ -27,8 +27,11 @@ export const createAuthInterceptor = (
 
 export const applyAuthInterceptor = (instance: AxiosInstance) =>
     createAuthInterceptor(instance, async config => {
-        config.headers.authorization = `Bearer ${localStorage.getItem(
-            'token',
-        )}`;
+        if (config.headers) {
+            config.headers['authorization'] = `Bearer ${localStorage.getItem(
+                'token',
+            )}`;
+        }
+
         return config;
     });
