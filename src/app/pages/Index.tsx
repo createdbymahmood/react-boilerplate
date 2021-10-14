@@ -1,8 +1,8 @@
+import { Switch } from '@mui/material';
 import { FC } from 'react';
-import { Box } from '@components';
 
 const Index: FC = () => {
-    return <Box>Home page</Box>;
+    return <Switch />;
 };
 
 export default Index;

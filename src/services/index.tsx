@@ -8,6 +8,7 @@ import { ReactQueryService } from 'services/reactQuery';
 import { HelmetService } from 'services/helmet';
 import { RouterService } from 'services/router/RouterService';
 import { GraphqlService } from 'services/graphql';
+import ThemeService from './theme';
 
 /* Initialize languages */
 import 'services/i18n/i18n';
@@ -22,7 +23,9 @@ const AppProviders: FC = ({ children }) => {
                     <ReactQueryService>
                         <GraphqlService>
                             <RouterService>
-                                <AuthProvider>{children}</AuthProvider>
+                                <ThemeService>
+                                    <AuthProvider>{children}</AuthProvider>
+                                </ThemeService>
                             </RouterService>
                         </GraphqlService>
                     </ReactQueryService>
