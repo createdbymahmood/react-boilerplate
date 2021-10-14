@@ -12,7 +12,7 @@ import ThemeService from './theme';
 
 /* Initialize languages */
 import 'services/i18n/i18n';
-import 'assets/styles/tw.css';
+// import 'assets/styles/tw.css';
 import AuthProvider from '@store/auth/AuthProvider';
 
 const AppProviders: FC = ({ children }) => {
