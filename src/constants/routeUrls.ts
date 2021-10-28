@@ -1,4 +1,4 @@
 export const ROUTE_URLS = {
-    Index: '/home',
+    Home: '/home',
     Login: '/login',
 } as const;

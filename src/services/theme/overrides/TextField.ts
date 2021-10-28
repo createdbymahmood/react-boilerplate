@@ -6,11 +6,10 @@ export default function TextField(
     return {
         MuiTextField: {
             defaultProps: {},
-
             styleOverrides: {
                 root: {
                     '& .MuiOutlinedInput-root': {
-                        borderRadius: 0,
+                        borderRadius: 99999,
                     },
                 },
             },

@@ -3,8 +3,8 @@ import { lazyLoad } from 'helpers/react/loadable';
 import { Route } from 'services/router/RouteFactory';
 
 /* pages */
-const Index = lazyLoad(
-    () => import('@pages/Index' /* webpackChunkName: "Index" */),
+const Home = lazyLoad(
+    () => import('@pages/Home' /* webpackChunkName: "Home" */),
 );
 const Login = lazyLoad(
     () => import('@pages/auth/Login' /* webpackChunkName: "Login" */),
@@ -12,8 +12,8 @@ const Login = lazyLoad(
 
 export const ROUTES_ARRAY: Route[] = [
     {
-        path: ROUTE_URLS.Index,
-        component: Index,
+        path: ROUTE_URLS.Home,
+        component: Home,
         exact: true,
         config: {
             private: true,
@@ -29,7 +29,7 @@ export const ROUTES_ARRAY: Route[] = [
     },
     {
         path: '*',
-        to: ROUTE_URLS.Index,
+        to: ROUTE_URLS.Home,
         config: {
             private: false,
         },
