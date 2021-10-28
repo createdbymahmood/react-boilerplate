@@ -1,9 +1,10 @@
-import { FC } from 'react';
-import { RouteFactory } from 'services/router/RouteFactory';
-import { ROUTES_ARRAY } from 'constants/routesArray';
+import { Fragment } from 'react';
+import { useRoutes } from 'react-router-dom';
+import routes from 'routes';
 
-const App: FC = () => {
-    return <RouteFactory routes={ROUTES_ARRAY} />;
+const App = () => {
+    const content = useRoutes(routes);
+    return <Fragment>{content}</Fragment>;
 };
 
 export default App;
