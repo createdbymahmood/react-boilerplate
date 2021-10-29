@@ -1,16 +1,15 @@
-import { generatePath } from 'react-router-dom';
-import { stringify } from 'query-string';
-import { get } from 'lodash';
-import { ROUTE_URLS } from 'constants/routeUrls';
-import { Path } from '@entities/global';
+import { find } from 'lodash';
+import generatePath from 'urlcat';
+import routes from 'routes';
+import { flattenRoutes } from 'helpers/router/flattenRoutes';
 
-type PathType = Path<typeof ROUTE_URLS>;
-type ParamsType = { [paramName: string]: string | number | boolean } | any;
+export declare type Params<Key extends string = string> = {
+    readonly [key in Key]: string | undefined;
+};
 
-export function createRoute(path: PathType, params?: ParamsType, qs?: object) {
-    const url = generatePath(get(ROUTE_URLS, path), params);
-
-    if (qs) return `${url}?${stringify(qs)}`;
-
-    return url;
-}
+export const createRoute = (name: string, params: Params = {}) => {
+    const flattened = flattenRoutes(routes);
+    const findedRoute = find(flattened, { name });
+    if (findedRoute) return generatePath(findedRoute.path, params);
+    throw new Error('path not found!');
+};

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import {} from 'react-router-dom';
 import { useEffectOnce } from 'react-use';
 
 type Props = {
@@ -7,7 +7,6 @@ type Props = {
 };
 
 export function useOverlayConfig({ timeout }: Props) {
-    const history = useHistory();
     const [open, setOpen] = useState(false);
 
     /* Open modal on first mount */
@@ -15,7 +14,7 @@ export function useOverlayConfig({ timeout }: Props) {
 
     const handleClose = () => {
         setOpen(false);
-        setTimeout(history.goBack, timeout);
+        /*  setTimeout(history.goBack, timeout); */
     };
 
     return [open, handleClose] as const;

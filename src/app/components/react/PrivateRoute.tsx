@@ -2,7 +2,7 @@ import { ComponentType, Fragment } from 'react';
 /* Components */
 import { Route, RouteProps } from 'react-router-dom';
 /* Modules */
-import { Redirect } from 'react-router';
+import { Navigate } from 'react-router';
 /* Helpers */
 import { createRoute } from 'helpers/ts/createRoute';
 /* Types */
@@ -21,15 +21,14 @@ export function PrivateRoute({
 
     console.log({ isAuthenticated, isInitialized });
 
-    const UnauthorizedRedirectionConfig: History.LocationDescriptor = {
+    const UnauthorizedRedirectionConfig = {
         pathname: createRoute('Login'),
-        state: { from: rest.location },
     };
 
     if (!isInitialized) return <Fragment></Fragment>;
 
     if (!isAuthenticated) {
-        return <Redirect to={UnauthorizedRedirectionConfig} />;
+        return <Navigate to={UnauthorizedRedirectionConfig} />;
     }
 
     return <Route {...rest} />;
