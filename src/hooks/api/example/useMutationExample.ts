@@ -8,9 +8,9 @@ import { useMutation, UseMutationOptions } from 'react-query';
 import xhrService, { AxiosError } from 'services/xhr';
 
 /* Types */
-import type * as User from '@entities/user';
-import type * as Server from '@entities/server';
-import type * as Api from '@entities/api';
+import type * as User from 'types/user';
+import type * as Server from 'types/server';
+import type * as Api from 'types/api';
 
 type TData = User.Model;
 type TError = AxiosError<Server.Error>;

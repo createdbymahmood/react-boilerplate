@@ -5,7 +5,7 @@ import {
     AxiosRequestConfig,
     AxiosResponse,
 } from 'axios';
-import * as IServer from '@entities/server';
+import * as IServer from 'types/server';
 
 export const applyErrorInterceptor = (instance: AxiosInstance) => {
     return createErrorInterceptor(instance);
