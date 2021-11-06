@@ -1,11 +1,5 @@
 const WebpackBar = require('webpackbar');
-
 module.exports = {
-    style: {
-        postcss: {
-            plugins: [require('tailwindcss'), require('autoprefixer')],
-        },
-    },
     plugins: [],
     webpack: {
         alias: {},
