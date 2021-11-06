@@ -29,6 +29,11 @@ module.exports = {
             remove: [] /* An array of plugin constructor's names (i.e. "StyleLintPlugin", "ESLintWebpackPlugin" ) */,
         },
         configure: (webpackConfig, { env, paths }) => {
+            webpackConfig.module.rules.push({
+                type: 'javascript/auto',
+                test: /\.mjs$/,
+                use: [],
+            });
             return webpackConfig;
         },
     },
