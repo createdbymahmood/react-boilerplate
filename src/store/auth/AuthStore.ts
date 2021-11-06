@@ -1,7 +1,7 @@
 import create from 'zustand';
 import { AuthStoreType } from './AuthStore.types';
 
-import { login } from 'hooks/api';
+const login = () => new Promise(res => setTimeout(res, 1000));
 
 export const useAuthStore = create<AuthStoreType>(set => ({
     user: null,

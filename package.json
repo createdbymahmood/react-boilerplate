@@ -60,7 +60,8 @@
         "test": "craco test",
         "eject": "react-scripts eject",
         "prettify": "prettier --write .",
-        "codegen": "graphql-codegen --config graphql-codegen.yml"
+        "codegen": "graphql-codegen --config graphql-codegen.yml",
+        "generate-api": "orval && prettier --write src/api"
     },
     "eslintConfig": {
         "extends": [
@@ -97,6 +98,7 @@
         "eslint-config-prettier": "8.3.0",
         "eslint-plugin-prettier": "4.0.0",
         "eslint-plugin-react-hooks": "4.2.0",
+        "orval": "6.2.4",
         "postcss": "^7",
         "prettier": "2.4.1",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat",

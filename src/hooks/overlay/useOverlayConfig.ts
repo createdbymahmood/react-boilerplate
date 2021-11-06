@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import {} from 'react-router-dom';
 import { useEffectOnce } from 'react-use';
 
 type Props = {
