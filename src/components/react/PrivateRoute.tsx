@@ -7,7 +7,7 @@ import { Navigate } from 'react-router';
 import { createRoute } from 'helpers/ts/createRoute';
 /* Types */
 import { History } from 'history';
-import { useAuthStore } from '@store/auth/AuthStore';
+import { useAuthStore } from 'store/auth/AuthStore';
 
 type Props = RouteProps & {
     component?: ComponentType;

@@ -1,7 +1,7 @@
 import create from 'zustand';
 import { AuthStoreType } from './AuthStore.types';
 
-import { login } from '@hooks/api';
+import { login } from 'hooks/api';
 
 export const useAuthStore = create<AuthStoreType>(set => ({
     user: null,

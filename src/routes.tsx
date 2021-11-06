@@ -1,13 +1,13 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 
 // guards
-import { AuthGuard, AuthLayout } from '@components';
+import { AuthGuard, AuthLayout } from 'components';
 
 // auth
-import Login from '@pages/auth/Login';
+import Login from 'pages/auth/Login';
 
 // main
-import Home from '@pages/Home';
+import Home from 'pages/Home';
 
 const routes: RouteObject[] = [
     {

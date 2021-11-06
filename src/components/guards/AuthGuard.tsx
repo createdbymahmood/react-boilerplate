@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useAuthStore } from '@store/auth/AuthStore';
+import { useAuthStore } from 'store/auth/AuthStore';
 import { Navigate } from 'react-router-dom';
 import { createRoute } from 'helpers/ts';
 
