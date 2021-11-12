@@ -1,13 +1,9 @@
 import { find } from 'lodash';
-import generatePath from 'urlcat';
-import routes from 'routes';
+import generatePath, { ParamMap } from 'urlcat';
 import { flattenRoutes } from 'helpers/router/flattenRoutes';
+import routes from 'routes';
 
-export declare type Params<Key extends string = string> = {
-    readonly [key in Key]: string | undefined;
-};
-
-export const createRoute = (name: string, params: Params = {}) => {
+export const createRoute = (name: string, params: ParamMap = {}) => {
     const flattened = flattenRoutes(routes);
     const findedRoute = find(flattened, { name });
     if (findedRoute) return generatePath(findedRoute.path, params);
