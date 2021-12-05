@@ -10,6 +10,7 @@ import typography from './typography';
 import breakpoints from './breakpoints';
 import componentsOverride from './overrides';
 import palette from './palette';
+import { assignIn } from 'lodash';
 
 type ThemeServiceProps = {
     children: ReactNode;
@@ -24,7 +25,7 @@ const themeOptions = createTheme({
 
 export default function ThemeService({ children }: ThemeServiceProps) {
     const theme = createTheme(themeOptions);
-    theme.components = componentsOverride(theme);
+    assignIn(theme, { components: componentsOverride(theme) });
 
     return (
         <StyledEngineProvider injectFirst>
