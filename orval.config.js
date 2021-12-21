@@ -2,7 +2,7 @@ module.exports = {
     petstore: {
         output: {
             mode: 'single',
-            target: './src/api/index.ts',
+            target: './src/api/generated.ts',
             mock: false,
             client: 'react-query',
             override: {
