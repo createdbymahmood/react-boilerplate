@@ -1,5 +1,6 @@
 const WebpackBar = require('webpackbar');
 const { shuffle, pipe, last } = require('lodash/fp');
+const webpack = require('webpack');
 
 const colors = [
     '#ff6be9',
@@ -19,6 +20,9 @@ module.exports = {
         plugins: {
             add: [
                 new WebpackBar({ color: pickRandomColor(colors) }),
+                new webpack.DefinePlugin({
+                    process: { env: {} },
+                }),
             ] /* An array of plugins */,
             remove: [] /* An array of plugin constructor's names (i.e. "StyleLintPlugin", "ESLintWebpackPlugin" ) */,
         },

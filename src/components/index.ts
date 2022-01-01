@@ -5,3 +5,4 @@ export * from './guards';
 
 /* Features */
 export * from './auth';
+export * from './sortable';
