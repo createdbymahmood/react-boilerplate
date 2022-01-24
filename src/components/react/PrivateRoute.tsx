@@ -19,8 +19,6 @@ export function PrivateRoute({
 }: Props): JSX.Element {
     const { isAuthenticated, isInitialized } = useAuthStore();
 
-    console.log({ isAuthenticated, isInitialized });
-
     const UnauthorizedRedirectionConfig = {
         pathname: createRoute('Login'),
     };

@@ -4,31 +4,11 @@ import { Navigate, RouteObject } from 'react-router-dom';
 import { AuthGuard, AuthLayout } from 'components';
 
 // auth
-import Login from 'pages/auth/Login';
 
 // main
 import Home from 'pages/Home';
 
 const routes: RouteObject[] = [
-    {
-        path: 'auth',
-        element: <AuthLayout />,
-        children: [
-            {
-                path: '',
-                element: <Navigate to='/auth/login' />,
-            },
-            {
-                name: 'login',
-                path: 'login',
-                element: <Login />,
-            },
-            {
-                path: '*',
-                element: <Navigate to='/auth/login' />,
-            },
-        ],
-    },
     {
         path: 'home',
         name: 'home',
