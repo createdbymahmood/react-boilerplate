@@ -20,7 +20,7 @@ export function PrivateRoute({
     const { isAuthenticated, isInitialized } = useAuthStore();
 
     const UnauthorizedRedirectionConfig = {
-        pathname: createRoute('Login'),
+        pathname: createRoute('login'),
     };
 
     if (!isInitialized) return <Fragment></Fragment>;
