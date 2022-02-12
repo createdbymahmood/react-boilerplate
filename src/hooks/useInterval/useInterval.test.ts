@@ -1,56 +1,51 @@
 import { renderHook } from '@testing-library/react-hooks/native';
 import useInterval from './useInterval';
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+let callback;
 
-describe('useInterval', () => {
-    afterEach(() => {
-        jest.clearAllMocks();
-    });
-
-    test('should fire the callback function (1)', async () => {
-        const timeout = 500;
-        const callback = jest.fn();
-        renderHook(() => useInterval(callback, timeout));
-        await sleep(timeout);
-        expect(callback).toHaveBeenCalledTimes(1);
-    });
-
-    test('should fire the callback function (2)', async () => {
-        const timeout = 500;
-        const earlyTimeout = 400;
-        const callback = jest.fn();
-        renderHook(() => useInterval(callback, timeout));
-        await sleep(earlyTimeout);
-        expect(callback).not.toHaveBeenCalled();
-    });
-
-    test('should call set interval on start', () => {
-        const timeout = 1200;
-        mockSetInterval();
-        const callback = jest.fn();
-        renderHook(() => useInterval(callback, timeout));
-        expect(setInterval).toHaveBeenCalledTimes(1);
-        expect(setInterval).toHaveBeenCalledWith(expect.any(Function), timeout);
-    });
-
-    test('should call clearTimeout on unmount', () => {
-        mockClearInterval();
-        const callback = jest.fn();
-        const { unmount } = renderHook(() => useInterval(callback, 1200));
-        unmount();
-        expect(clearInterval).toHaveBeenCalledTimes(1);
-    });
+beforeEach(() => {
+    jest.useFakeTimers();
+    callback = jest.fn();
 });
 
-function mockSetInterval() {
-    jest.useFakeTimers();
-    jest.spyOn(global, 'setInterval');
-}
+afterEach(() => {
+    callback.mockRestore();
+    jest.clearAllTimers();
+});
 
-function mockClearInterval() {
-    jest.useFakeTimers();
-    jest.spyOn(global, 'clearInterval');
-}
+afterAll(() => {
+    jest.useRealTimers();
+});
+
+test('should fire the callback function (1)', () => {
+    const timeout = 500;
+    renderHook(() => useInterval(callback, timeout));
+    jest.advanceTimersByTime(timeout);
+    expect(callback).toBeCalled();
+});
+
+test('should fire the callback function (2)', () => {
+    const timeout = 500;
+    const earlyTimeout = 400;
+    renderHook(() => useInterval(callback, timeout));
+    jest.advanceTimersByTime(earlyTimeout);
+    expect(callback).not.toHaveBeenCalled();
+});
+
+test('should call set interval on start', () => {
+    const timeout = 1200;
+    renderHook(() => useInterval(callback, timeout));
+    jest.advanceTimersByTime(timeout);
+
+    expect(setInterval).toHaveBeenCalledTimes(1);
+    expect(setInterval).toHaveBeenCalledWith(expect.any(Function), timeout);
+});
+
+it('should clear interval on unmount', () => {
+    const { unmount } = renderHook(() => useInterval(callback, 200));
+    expect(clearInterval).not.toHaveBeenCalled();
+    unmount();
+    expect(clearInterval).toHaveBeenCalledTimes(1);
+});
 
 export {};
