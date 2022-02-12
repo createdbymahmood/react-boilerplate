@@ -1,9 +1,10 @@
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import {
     ErrorBoundary as ReactErrorBoundary,
     FallbackProps,
 } from 'react-error-boundary';
 
+const reload = () => window.location.reload();
 export function ErrorBoundary(props: { children: ReactNode }): JSX.Element {
     return (
         <ReactErrorBoundary
@@ -18,5 +19,10 @@ export function ErrorBoundary(props: { children: ReactNode }): JSX.Element {
 }
 
 function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
+    if (error.name === 'ChunkLoadError') {
+        reload();
+        return <Fragment />;
+    }
+
     return <div>OOPS! something went wrong!</div>;
 }

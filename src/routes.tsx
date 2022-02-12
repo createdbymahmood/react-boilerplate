@@ -1,12 +1,9 @@
 import { Navigate, Outlet, RouteObject } from 'react-router-dom';
 
-// guards
-import { AuthGuard, AuthLayout } from 'components';
+import { lazyLoad } from 'helpers/react/lazyload';
 
-// auth
+const Home = lazyLoad(() => import('pages/Home'));
 
-// main
-import Home from 'pages/Home';
 import { paths } from 'constants/paths';
 
 const Profile = () => {

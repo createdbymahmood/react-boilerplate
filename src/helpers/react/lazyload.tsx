@@ -1,9 +1,12 @@
+import { retry } from 'helpers/ts/retry';
 import React, { lazy, Suspense } from 'react';
 
 interface Opts {
     fallback: React.ReactNode;
 }
 type Unpromisify<T> = T extends Promise<infer P> ? P : never;
+
+type ImportFunc<U> = () => Promise<{ default: U }>;
 
 export const lazyLoad = <
     T extends Promise<any>,
@@ -13,7 +16,7 @@ export const lazyLoad = <
     selectorFunc?: (s: Unpromisify<T>) => U,
     opts: Opts = { fallback: null },
 ) => {
-    let lazyFactory: () => Promise<{ default: U }> = importFunc;
+    let lazyFactory: ImportFunc<U> = () => retry<{ default: U }>(importFunc);
 
     if (selectorFunc) {
         lazyFactory = () =>
