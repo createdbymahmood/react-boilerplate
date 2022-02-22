@@ -1,13 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 
-type HomeProps = {};
+export default function Home() {
+    return <div>Home</div>;
+}
 
-const Home: React.FC<HomeProps> = ({ children }) => {
-    return (
-        <div>
-            <Link to='/login'>Login</Link>
-        </div>
-    );
-};
-export default Home;
+const noop = () => 0;
+
+export function useInterval(
+    callback: (...args: unknown[]) => void = noop,
+    delay: number = 0,
+) {
+    useEffect(() => {
+        const interval = setInterval(() => callback(), delay);
+        return () => clearInterval(interval);
+    }, [delay]);
+
+    return undefined;
+}
