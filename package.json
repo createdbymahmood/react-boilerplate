@@ -4,6 +4,8 @@
     "private": true,
     "dependencies": {
         "@apollo/client": "3.5.8",
+        "@casl/ability": "5.4.3",
+        "@casl/react": "2.3.0",
         "@craco/craco": "6.4.3",
         "@dnd-kit/core": "5.0.1",
         "@dnd-kit/sortable": "6.0.0",
@@ -34,7 +36,6 @@
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "react-error-boundary": "3.1.4",
-        "react-error-overlay": "6.0.10",
         "react-helmet-async": "1.2.2",
         "react-hook-form": "7.26.1",
         "react-i18next": "11.15.4",
@@ -108,5 +109,8 @@
         "raf-stub": "3.0.0",
         "react-test-renderer": "17.0.2",
         "webpackbar": "5.0.2"
+    },
+    "resolutions": {
+        "react-error-overlay": "6.0.9"
     }
 }

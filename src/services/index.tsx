@@ -14,6 +14,7 @@ import ThemeService from './theme';
 import 'services/i18n/i18n';
 // import 'assets/styles/tw.css';
 import AuthProvider from 'store/auth/AuthProvider';
+import { ability, AbilityContext } from './abac';
 
 const AppProviders: FC = ({ children }) => {
     return (
@@ -24,7 +25,13 @@ const AppProviders: FC = ({ children }) => {
                         <GraphqlService>
                             <RouterService>
                                 <ThemeService>
-                                    <AuthProvider>{children}</AuthProvider>
+                                    <AuthProvider>
+                                        <AbilityContext.Provider
+                                            value={ability}
+                                        >
+                                            {children}
+                                        </AbilityContext.Provider>
+                                    </AuthProvider>
                                 </ThemeService>
                             </RouterService>
                         </GraphqlService>
