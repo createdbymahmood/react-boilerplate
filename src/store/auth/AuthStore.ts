@@ -10,7 +10,7 @@ export const useAuthStore = create<AuthStoreType>(set => ({
     login: async (email, password, remember) => {
         try {
             await login();
-            return set(state => ({
+            set(state => ({
                 isInitialized: true,
                 isAuthenticated: true,
                 user: {
@@ -18,7 +18,7 @@ export const useAuthStore = create<AuthStoreType>(set => ({
                 },
             }));
         } catch (error) {
-            return set(state => ({
+            set(state => ({
                 isInitialized: true,
                 isAuthenticated: false,
                 user: null,
@@ -26,18 +26,17 @@ export const useAuthStore = create<AuthStoreType>(set => ({
         }
     },
 
-    logout: () => {
-        return set({
+    logout: () =>
+        set({
             isAuthenticated: false,
             isInitialized: true,
             user: null,
-        });
-    },
+        }),
 
     initialize: async () => {
         try {
             await login();
-            return set(state => ({
+            set(state => ({
                 isInitialized: true,
                 isAuthenticated: true,
                 user: {
@@ -45,7 +44,7 @@ export const useAuthStore = create<AuthStoreType>(set => ({
                 },
             }));
         } catch (error) {
-            return set(state => ({
+            set(state => ({
                 isInitialized: true,
                 isAuthenticated: false,
                 user: null,
