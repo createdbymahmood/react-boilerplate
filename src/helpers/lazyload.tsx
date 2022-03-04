@@ -1,5 +1,5 @@
-import { retry } from 'helpers/ts/retry';
 import React, { lazy, Suspense } from 'react';
+import { retry } from 'helpers';
 
 interface Opts {
     fallback: React.ReactNode;

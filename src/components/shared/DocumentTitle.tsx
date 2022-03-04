@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Helmet, HelmetProps } from 'react-helmet-async';
-import * as CONFIGS from 'constants/configs';
+import * as configs from 'constants/configs';
 
 export const DocumentTitle: FC<HelmetProps> = ({
     title,
@@ -10,7 +10,7 @@ export const DocumentTitle: FC<HelmetProps> = ({
     return (
         <Helmet {...props}>
             <title>
-                {title} | {CONFIGS.APP_TITLE}
+                {title} | {configs.appTitle}
             </title>
             {children}
         </Helmet>

@@ -10,6 +10,9 @@ export const xhrService = Axios.create({
     baseURL: process.env.REACT_APP_API_SERVICE_URL,
 });
 
+export const setXhrSessionToken = (token: string) =>
+    (xhrService.defaults.headers.common['Authorization'] = `Bearer ${token}`);
+
 export const applyErrorInterceptor = (instance: AxiosInstance) => {
     return createErrorInterceptor(instance);
 };

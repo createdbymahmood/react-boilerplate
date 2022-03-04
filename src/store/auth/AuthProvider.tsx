@@ -5,10 +5,9 @@ import { useAuthStore } from './AuthStore';
 const AuthProvider: React.FC = ({ children }) => {
     const { initialize } = useAuthStore();
 
-    useEffectOnce(() => {
-        initialize();
-    });
+    useEffectOnce(() => void initialize());
 
     return <div>{children}</div>;
 };
+
 export default AuthProvider;

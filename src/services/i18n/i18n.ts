@@ -26,7 +26,7 @@ export const i18n = i18next
     .init({
         resources: translationsJson,
         fallbackLng: 'en',
-        debug: env.IS_DEV,
+        debug: env.isDev,
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
         },

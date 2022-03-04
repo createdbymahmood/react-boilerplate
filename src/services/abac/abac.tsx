@@ -1,8 +1,7 @@
+import React, { ComponentProps, createContext, FC } from 'react';
 import { Ability, defineAbility } from '@casl/ability';
 import { createCanBoundTo, useAbility } from '@casl/react';
-import { createRoute } from 'helpers/ts/createRoute';
-import React, { ComponentProps, createContext, FC } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 export type Type = Ability<[Actions, Subjects]>;
 

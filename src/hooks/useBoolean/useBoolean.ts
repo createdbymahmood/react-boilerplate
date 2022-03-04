@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 
-interface Props {
-    initialValue?: boolean;
-}
-
 interface UseBooleanHookResult {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;

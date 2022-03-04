@@ -5,6 +5,7 @@ import {
 } from 'react-error-boundary';
 
 const reload = () => window.location.reload();
+
 export function ErrorBoundary(props: { children: ReactNode }): JSX.Element {
     return (
         <ReactErrorBoundary

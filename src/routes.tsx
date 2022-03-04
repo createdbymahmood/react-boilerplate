@@ -1,25 +1,37 @@
-import { Navigate, Outlet, RouteObject } from 'react-router-dom';
-
-import { lazyLoad } from 'helpers/react/lazyload';
+import { Navigate, RouteObject } from 'react-router-dom';
+import { paths } from 'constants/paths';
+import { lazyLoad } from 'helpers';
+import { AuthGuard, NonAuthGuard } from 'components';
 
 const Home = lazyLoad(() => import('pages/Home'));
 
-import { paths } from 'constants/paths';
-import { RouterCan as Can } from 'services/abac';
+/* Auth */
+const Login = lazyLoad(() => import('pages/auth/Login'));
 
 const routes: RouteObject[] = [
     {
+        element: <AuthGuard />,
         path: paths.home,
-        element: (
-            <Can do='view' on='Home' to={paths.home}>
-                <Home />
-            </Can>
-        ),
+        children: [
+            {
+                index: true,
+                element: <Home />,
+            },
+        ],
     },
-
+    {
+        element: <NonAuthGuard />,
+        path: paths.auth.login,
+        children: [
+            {
+                index: true,
+                element: <Login />,
+            },
+        ],
+    },
     {
         path: '*',
-        element: <Navigate to={paths.home} />,
+        element: <Navigate to={paths.auth.login} />,
     },
 ];
 

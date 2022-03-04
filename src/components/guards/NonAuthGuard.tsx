@@ -4,16 +4,16 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { createRoute } from 'helpers';
 import { Loading } from 'components';
 
-export const AuthGuard: React.FC = ({ children }) => {
+export const NonAuthGuard: React.FC = ({ children }) => {
     const { isAuthenticated, isInitialized } = useAuthStore();
 
     const UnauthorizedRedirectionConfig = {
-        pathname: createRoute('auth.login'),
+        pathname: createRoute('home'),
     };
 
     if (!isInitialized) return <Loading />;
 
-    if (!isAuthenticated) {
+    if (isAuthenticated) {
         return <Navigate to={UnauthorizedRedirectionConfig} />;
     }
 
