@@ -6,7 +6,6 @@ module.exports = {
             mock: false,
             client: 'react-query',
             prettier: true,
-            clean: true,
             override: {
                 mutator: {
                     path: './src/services/xhr/xhrService.ts',
