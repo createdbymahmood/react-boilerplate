@@ -5,9 +5,7 @@ import { Navigate } from 'react-router-dom';
 
 export type Type = Ability<[Actions, Subjects]>;
 
-export const AbilityContext = createContext<Type>(
-    {} as Ability<[Actions, Subjects]>,
-);
+export const AbilityContext = createContext<Type>({} as Type);
 
 type Actions = 'view';
 type Subjects = 'Home';

@@ -39,7 +39,7 @@ const captureResponseExceptions = (
 ) => {
     res.use(undefined, (error: AxiosError<any>) => {
         if (error.response) {
-            return Promise.reject(error?.response?.data);
+            return Promise.reject(error?.response);
         }
         return Promise.reject(error);
     });
