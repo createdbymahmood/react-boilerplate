@@ -1,11 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 
-export const AuthLayout: React.FC = () => {
+export const AuthLayout: React.FC = ({ children }) => {
     return (
         <div>
-            <div>layout</div>
-            <Outlet />
+            layout
+            <div>{children}</div>
         </div>
     );
 };
