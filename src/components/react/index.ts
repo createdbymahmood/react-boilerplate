@@ -1,3 +1,3 @@
 export * from './ErrorBoundary';
-export * from './withErrorBoundary';
+export * from './withQueryErrorBoundary';
 export * from './withSuspense';

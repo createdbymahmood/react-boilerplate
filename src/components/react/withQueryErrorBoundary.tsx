@@ -18,7 +18,7 @@ function ErrorFallback({ resetErrorBoundary }: FallbackProps) {
     );
 }
 
-export function withErrorBoundary<T extends {}>(
+export function withQueryErrorBoundary<T extends {}>(
     fallback: ComponentType<FallbackProps> = ErrorFallback,
 ) {
     return (WrappedComponent: ComponentType<T>) => {

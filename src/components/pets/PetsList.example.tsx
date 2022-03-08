@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Skeleton } from '@mui/material';
 import { useListPets, useShowPetById } from 'api';
-import { withErrorBoundary, withSuspense } from 'components';
+import { withQueryErrorBoundary, withSuspense } from 'components';
 import { range } from 'lodash';
 import { compose } from 'lodash/fp';
 
@@ -22,5 +22,5 @@ const Loading = () => (
 
 export const PetsList = compose(
     withSuspense(<Loading />),
-    withErrorBoundary(),
+    withQueryErrorBoundary(),
 )(PetsListBase);
