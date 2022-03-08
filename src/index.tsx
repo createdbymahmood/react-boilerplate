@@ -8,14 +8,14 @@ import Application from 'App';
 
 /* services */
 import reportWebVitals from 'services/webVitals/reportWebVitals';
-import AppProviders from 'services';
+import ServiceProviders from 'services/ServiceProviders';
 
 const MOUNT_NODE = document.getElementById('app') as HTMLElement;
 
 ReactDOM.render(
-    <AppProviders>
+    <ServiceProviders>
         <Application />
-    </AppProviders>,
+    </ServiceProviders>,
     MOUNT_NODE,
 );
 

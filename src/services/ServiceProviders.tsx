@@ -16,7 +16,7 @@ import 'services/i18n/i18n';
 import AuthProvider from 'store/auth/AuthProvider';
 import { ability, AbilityContext } from './abac';
 
-const AppProviders: FC = ({ children }) => {
+const ServiceProviders: FC = ({ children }) => {
     return (
         <React.StrictMode>
             <ErrorBoundary>
@@ -42,4 +42,4 @@ const AppProviders: FC = ({ children }) => {
     );
 };
 
-export default AppProviders;
+export default ServiceProviders;
