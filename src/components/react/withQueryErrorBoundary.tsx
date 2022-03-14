@@ -1,4 +1,4 @@
-import { ComponentType } from 'react';
+import * as React from 'react';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 import { QueryErrorResetBoundary } from 'react-query';
 import { Button, Stack, Typography } from '@mui/material';
@@ -19,9 +19,9 @@ function ErrorFallback({ resetErrorBoundary }: FallbackProps) {
 }
 
 export function withQueryErrorBoundary<T extends {}>(
-    fallback: ComponentType<FallbackProps> = ErrorFallback,
+    fallback: React.ComponentType<FallbackProps> = ErrorFallback,
 ) {
-    return (WrappedComponent: ComponentType<T>) => {
+    return (WrappedComponent: React.ComponentType<T>) => {
         return (props: T) => (
             <QueryErrorResetBoundary>
                 {({ reset }) => (

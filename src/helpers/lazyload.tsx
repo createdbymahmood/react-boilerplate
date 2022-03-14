@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import * as React from 'react';
 import { retry } from 'helpers';
 
 interface Opts {
@@ -23,11 +23,11 @@ export const lazyLoad = <
             importFunc().then(module => ({ default: selectorFunc(module) }));
     }
 
-    const LazyComponent = lazy(lazyFactory);
+    const LazyComponent = React.lazy(lazyFactory);
 
     return (props: React.ComponentProps<U>): JSX.Element => (
-        <Suspense fallback={opts.fallback!}>
+        <React.Suspense fallback={opts.fallback!}>
             <LazyComponent {...props} />
-        </Suspense>
+        </React.Suspense>
     );
 };

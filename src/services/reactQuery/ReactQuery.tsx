@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import * as React from 'react';
 
 /* Modules */
 import { QueryClientProvider, QueryClient } from 'react-query';
@@ -12,7 +12,7 @@ export const queryClient = new QueryClient({
     },
 });
 
-export const ReactQueryService: FC = ({ children }) => {
+export const ReactQueryService: React.FC = ({ children }) => {
     return (
         <QueryClientProvider client={queryClient}>
             {children}

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import * as React from 'react';
 import { CssBaseline } from '@mui/material';
 import {
     createTheme,
@@ -13,7 +13,7 @@ import palette from './palette';
 import { assignIn } from 'lodash';
 
 type ThemeServiceProps = {
-    children: ReactNode;
+    children: React.ReactNode;
 };
 
 const themeOptions = createTheme({

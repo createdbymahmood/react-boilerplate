@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useEffectOnce } from 'react-use';
 import { useAuthStore } from './AuthStore';
 

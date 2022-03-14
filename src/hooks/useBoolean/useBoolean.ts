@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 
 interface UseBooleanHookResult {
     value: boolean;
@@ -11,7 +11,7 @@ interface UseBooleanHookResult {
 export default function useBoolean(
     initialValue: boolean = false,
 ): UseBooleanHookResult {
-    const [value, setValue] = useState(initialValue);
+    const [value, setValue] = React.useState(initialValue);
 
     const setTrue = () => setValue(true);
     const setFalse = () => setValue(false);

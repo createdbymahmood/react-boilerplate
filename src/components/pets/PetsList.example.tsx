@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import * as React from 'react';
 import { Skeleton } from '@mui/material';
 import { useListPets, useShowPetById } from 'api';
 import { withQueryErrorBoundary, withSuspense } from 'components';
@@ -13,11 +13,11 @@ const PetsListBase: React.VFC = () => {
 };
 
 const Loading = () => (
-    <Fragment>
+    <React.Fragment>
         {range(5).map(() => (
             <Skeleton height={50} key={Math.random()} />
         ))}
-    </Fragment>
+    </React.Fragment>
 );
 
 export const PetsList = compose(

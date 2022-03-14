@@ -1,8 +1,12 @@
-import { FC } from 'react';
+import * as React from 'react';
 import { Helmet as OriginalHelmet, HelmetProps } from 'react-helmet-async';
 import * as helmet from 'constants/helmet';
 
-export const Helmet: FC<HelmetProps> = ({ title, children, ...props }) => {
+export const Helmet: React.FC<HelmetProps> = ({
+    title,
+    children,
+    ...props
+}) => {
     return (
         <OriginalHelmet {...props}>
             <title>

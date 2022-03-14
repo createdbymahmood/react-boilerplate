@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import * as React from 'react';
 import { BrowserRouter, BrowserRouterProps } from 'react-router-dom';
 
-export const RouterService: FC<BrowserRouterProps> = props => (
+export const RouterService: React.FC<BrowserRouterProps> = props => (
     <BrowserRouter {...props} />
 );

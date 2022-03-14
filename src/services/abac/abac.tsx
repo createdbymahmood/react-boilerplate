@@ -1,11 +1,11 @@
-import React, { ComponentProps, createContext, FC } from 'react';
+import * as React from 'react';
 import { Ability, defineAbility } from '@casl/ability';
 import { createCanBoundTo, useAbility } from '@casl/react';
 import { Navigate } from 'react-router-dom';
 
 export type Type = Ability<[Actions, Subjects]>;
 
-export const AbilityContext = createContext<Type>({} as Type);
+export const AbilityContext = React.createContext<Type>({} as Type);
 
 type Actions = 'view';
 type Subjects = 'Home';
@@ -16,7 +16,7 @@ export const ability = defineAbility<Type>((can, cannot) => {
 
 export const Can = createCanBoundTo(ability);
 
-export const RouterCan: FC<ComponentProps<typeof Can> & { to }> = ({
+export const RouterCan: React.FC<React.ComponentProps<typeof Can> & { to }> = ({
     children,
     to,
     ...props

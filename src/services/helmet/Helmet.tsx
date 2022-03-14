@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import * as React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 
-export const HelmetService: FC = ({ children }) => (
+export const HelmetService: React.FC = ({ children }) => (
     <HelmetProvider>{children}</HelmetProvider>
 );
