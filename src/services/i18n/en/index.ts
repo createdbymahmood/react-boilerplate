@@ -1,7 +1,7 @@
-import common from './common.json';
+import translation from './common.json';
 import home from './common.json';
 
 export const enTranslationJson = {
-    common,
+    translation,
     home,
 } as const;
