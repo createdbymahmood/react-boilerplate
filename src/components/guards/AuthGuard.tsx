@@ -4,7 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { createRoute } from 'helpers';
 import { Loading } from 'components';
 
-export const AuthGuard: React.FC = ({ children }) => {
+export const AuthGuard: React.VFC = ({}) => {
     const { isAuthenticated, isInitialized } = useAuthStore();
 
     const UnauthorizedRedirectionConfig = {

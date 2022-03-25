@@ -11,27 +11,25 @@ const Login = lazyLoad(() => import('pages/auth/Login'));
 const routes: RouteObject[] = [
     {
         element: <AuthGuard />,
-        path: paths.home,
         children: [
             {
-                index: true,
+                path: paths.home,
                 element: <Home />,
             },
         ],
     },
     {
         element: <NonAuthGuard />,
-        path: paths.auth.login,
         children: [
             {
-                index: true,
+                path: paths.auth.login,
                 element: <Login />,
             },
         ],
     },
     {
         path: '*',
-        element: <Navigate to={paths.auth.login} />,
+        element: <Navigate to={paths.home} />,
     },
 ];
 
