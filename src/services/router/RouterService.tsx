@@ -1,6 +1,10 @@
+import { createBrowserHistory } from 'history';
 import * as React from 'react';
-import { BrowserRouter, BrowserRouterProps } from 'react-router-dom';
+import { RouterProps } from 'react-router-dom';
+import { Router } from './Router';
 
-export const RouterService: React.FC<BrowserRouterProps> = props => (
-    <BrowserRouter {...props} />
-);
+export const history = createBrowserHistory();
+
+export const RouterService: React.FC<{}> = ({ children }) => {
+    return <Router history={history} children={children} />;
+};

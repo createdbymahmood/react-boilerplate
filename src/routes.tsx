@@ -8,6 +8,8 @@ const Home = lazyLoad(() => import('pages/Home'));
 /* Auth */
 const Login = lazyLoad(() => import('pages/auth/Login'));
 
+const Profile = () => <div>Profile</div>;
+
 const routes: RouteObject[] = [
     {
         element: <AuthGuard />,
@@ -15,6 +17,10 @@ const routes: RouteObject[] = [
             {
                 path: paths.home,
                 element: <Home />,
+            },
+            {
+                path: paths.profile,
+                element: <Profile />,
             },
         ],
     },
