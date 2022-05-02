@@ -11,6 +11,7 @@ import breakpoints from './breakpoints';
 import componentsOverride from './overrides';
 import palette from './palette';
 import { assignIn } from 'lodash';
+import { themeFunctions } from './fns';
 
 type ThemeServiceProps = {
     children: React.ReactNode;
@@ -21,6 +22,7 @@ const themeOptions = createTheme({
     shape,
     typography,
     breakpoints,
+    fns: themeFunctions,
 });
 
 export default function ThemeService({ children }: ThemeServiceProps) {
